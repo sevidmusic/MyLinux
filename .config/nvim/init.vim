@@ -14,6 +14,12 @@ set number
 " turn on relative numbers
 set relativenumber
 
+" turn off line wrapping
+set nowrap
+
+" Add a color column at line 70
+set colorcolumn=70
+
 " Auto Commands
 autocmd BufWritePre * :%s/\s\+$//e
 
