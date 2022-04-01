@@ -46,3 +46,9 @@ nnoremap <leader>ev :tabe $MYVIMRC<cr>
 " source $MYVIMRC
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Enter command mode, and begin a call to read !, the
+" output of whatever command is then entered will be
+" inserted into the current file on the line below
+" the line the cursor is currently on.
+nnoremap <leader>iso :read !
+

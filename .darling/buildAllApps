@@ -15,4 +15,20 @@ msgAndExit() {
 
 pathToPhpProjects="$HOME/dev/php"
 pathToRoady="$pathToPhpProjects/roady"
-pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
+pathToRoadyApps="$pathToRoady/Apps"
+availableApps="$pathToRoadyApps/*"
+
+[ ! -d "$pathToRoady" ] &&
+    msgAndExit "roady is not installed."
+
+[ ! -d "$pathToRoadyApps" ] &&
+    msgAndExit "roady's Apps directory does not exist."
+
+for app in  $availableApps
+do
+    [ -f "$app/Components.php" ] &&
+        /usr/bin/php "$app/Components.php" &&
+        msg "Finished building the $app App"
+done
+
+
