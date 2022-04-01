@@ -1,5 +1,7 @@
 # My Linux
 
+```
+
              /////////////
          /////////////////////
       ///////*767////////////////
@@ -21,6 +23,7 @@
          /////////////////////
              /////////////
 
+```
 
 This is a collection of my configuration files for Linux,
 as well as various scripts I have written, notes, and other
