@@ -1,0 +1,36 @@
+# Options
+set -o vi
+
+# Environment Vars
+PATH="${PATH}:${HOME}/.darling"
+PATH="${PATH}:${HOME}/.local/bin"
+
+# PS#
+PS1='\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;104m\] $ \[\033[01;0m\] '
+
+# Vars
+alias c='clear'
+alias ls='exa'
+alias more='less -R'
+alias less='less -R'
+alias q='exit'
+alias r="history -c && reset"
+alias tls='tmux ls'
+alias tna='tmux attach -t'
+alias tns='tmux new -s'
+alias voa='xargs --delimiter "\\n" --arg-file="${HOME}/vimfilelist" nvim --'
+alias gst='git status'
+alias gdf='git diff'
+alias gds='git diff --stat'
+alias gpu='git push -u'
+alias sshDarlingDev='ssh darling@104.237.146.46'
+alias devRm="rm -RfI ${HOME}/dev && killall php"
+alias gs="echo 'gs disabled via an alias defined in ~/.darlingrc'"
+alias cmx='cmatrix -su 7'
+alias cat='bat'
+alias cr='cargo check && cargo run'
+alias mylinux="/usr/bin/git --git-dir=${HOME}/.MyLinux --work-tree=${HOME}"
+
+
+# Startup commands
+wal -i "${HOME}/Pictures/MyLoves.png" && clear
