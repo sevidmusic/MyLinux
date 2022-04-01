@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Functions
+
+msg() {
+    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+# Variables
+
+pathToPhpProjects="$HOME/dev/php"
+pathToRoady="$pathToPhpProjects/roady"
+pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
