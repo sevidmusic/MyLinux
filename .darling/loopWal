@@ -1,0 +1,10 @@
+#!/bin/sh
+
+/home/darling/.local/bin/wal -c
+
+while :
+do
+    /home/darling/.local/bin/wal -q -i ~/Pictures/
+    sleep 10
+done
+

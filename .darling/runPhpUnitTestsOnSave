@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Functions
+
+msg() {
+    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+# Variables
+
+pathToPhpProjects="$HOME/dev/php"
+pathToRoady="$pathToPhpProjects/roady"
+pathToPhpUnit="$pathToRoady/vendor/bin/phpunit"
+
+cd "$pathToRoady" || msgAndExit 'roady is not installed'
+
+/usr/bin/find \
+    "$pathToRoady/Tests" \
+    "$pathToRoady/core" \
+    "$pathToRoady/index.php" \
+    "$pathToRoady"/Apps/*/DynamicOutput \
+    "$pathToRoady"/Apps/*/resources -type f -name "*.php" |
+    /usr/bin/entr "$pathToPhpUnit" -c "$pathToRoady/php.xml"
+
+
+
