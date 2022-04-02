@@ -5,6 +5,6 @@
 while :
 do
     /home/darling/.local/bin/wal -q -i ~/Pictures/
-    sleep 10
+    sleep 33.3333333333333333333333333333333
 done
 

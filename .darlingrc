@@ -31,6 +31,7 @@ alias cat='bat'
 alias cr='cargo check && cargo run'
 alias mylinux="/usr/bin/git --git-dir=${HOME}/.MyLinux --work-tree=${HOME}"
 alias rDev="[ -d ${HOME}/dev ] && rm -Rf ${HOME}/dev"
+alias uts='date +"%s"'
 
 
 # Startup commands

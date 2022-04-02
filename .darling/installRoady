@@ -13,30 +13,59 @@ msgAndExit() {
 
 # Variables
 
+timestamp=$(/usr/bin/date +"%s")
 pathToPhpProjects="$HOME/dev/php"
 pathToRoady="$pathToPhpProjects/roady"
 pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
+newBranchName="roady$timestamp"
 
 
 [ -d "$pathToRoady" ] && msgAndExit 'Roady is already installed.'
 
 [ ! -d "$pathToPhpProjects" ] && mkdir -p "$pathToPhpProjects"
 
-cd "$pathToPhpProjects" || msgAndExit "Failed to move into $pathToPhpProjects"
+cd "$pathToPhpProjects" ||
+    msgAndExit "Failed to move into $pathToPhpProjects"
 
 /usr/bin/git clone "https://sevidmusic:$pass@github.com/sevidmusic/roady.git"
 
-cd "$pathToRoady" || msgAndExit "Failed to move into $pathToRoady"
+cd "$pathToRoady" ||
+    msgAndExit "Failed to move into $pathToRoady"
 
-/home/darling/.local/bin/composer update || msgAndExit 'Failed to run composerupdate'
+/home/darling/.local/bin/composer update ||
+    msgAndExit 'Failed to run composerupdate'
 
 "$pathToRoady/vendor/bin/phpunit" -c "$pathToRoady/php.xml"
 
-"$pathToRoady/vendor/bin/phpstan" analyze --level 8 "$pathToRoady/index.php" "$pathToRoady/Tests" "$pathToRoady/core"
+"$pathToRoady/vendor/bin/phpstan" analyze --level 8 \
+    "$pathToRoady/index.php" \
+    "$pathToRoady/Tests" \
+    "$pathToRoady/core"
 
-[ ! -L "$HOME/.darling/rig" ] && ln -s "$HOME/dev/php/roady/vendor/darling/rig/bin/rig" "$HOME/.darling/rig"
+[ ! -L "$HOME/.darling/rig" ] &&
+    ln -s \
+        "$HOME/dev/php/roady/vendor/darling/rig/bin/rig" \
+        "$HOME/.darling/rig"
 
-[ ! -L "$HOME/.darling/rig" ] && msgAndExit 'Failed to create a symlink to rig.'
+[ ! -L "$HOME/.darling/rig" ] &&
+    msgAndExit 'Failed to create a symlink to rig.'
 
-msg "Installed roady at $pathToRoady | ran phpunit tests | ran phpstan tests | created symlink to rig in $HOME/.darling"
+/usr/bin/git checkout -b "$newBranchName"
+/usr/bin/git push --set-upstream origin "$newBranchName"
+
+"$pathToRoady/vendor/darling/rig/bin/rig" \
+    --make-app-package \
+    --path \
+    "$pathToRoady/vendor/darling/roady-app-packages/roadyDarkTheme"
+
+"$pathToRoady/vendor/darling/rig/bin/rig" \
+    --make-app-package \
+    --path \
+    "$pathToRoady/vendor/darling/roady-app-packages/roadyThemeTester"
+
+msg "Installed roady at $pathToRoady"
+msg "Ran phpunit tests"
+msg "Ran phpstan tests"
+msg "Created symlink to rig in $HOME/.darling"
+msg "Made the roadyDarkTheme and roadyThemeTester apps"
 

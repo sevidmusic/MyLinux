@@ -26,7 +26,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Normal Mode Mappings
 
 " define new normal mode mapping
-nnoremap <leader>nnvm onnoremap
+nnoremap <leader>nnvm zzo"<esc>o<esc>xinnoremap <\leader><esc>7hx$a
 
 " duplicate current line
 nnoremap <leader>dl 0Vy<esc>p
@@ -52,3 +52,20 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " the line the cursor is currently on.
 nnoremap <leader>iso :read !
 
+" List buffers
+nnoremap <leader>lb :ls<cr>
+
+" List changes
+nnoremap <leader>lc :changes<cr>
+
+" List registers
+nnoremap <leader>lr :registers<cr>
+
+" Save changes.
+nnoremap <leader>s :write<cr>
+
+" Reset undo history | !BROKEN_MAPPING
+" nnoremap <leader>ru :set undoreload=0 | edit %<cr>
+
+" Find the next
+nnoremap <leader>fnf $/function.*(<cr>zz0
