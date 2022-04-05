@@ -14,13 +14,19 @@ set number
 " turn on relative numbers
 set relativenumber
 
+" turn off line wrapping
+set nowrap
+
+" Add a color column at line 70
+set colorcolumn=70
+
 " Auto Commands
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Normal Mode Mappings
 
 " define new normal mode mapping
-nnoremap <leader>nnvm onnoremap
+nnoremap <leader>nnvm zzo"<esc>o<esc>xinnoremap <\leader><esc>7hx$a
 
 " duplicate current line
 nnoremap <leader>dl 0Vy<esc>p
@@ -39,4 +45,31 @@ nnoremap <leader>ev :tabe $MYVIMRC<cr>
 
 " source $MYVIMRC
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" Enter command mode, and begin a call to read !, the
+" output of whatever command is then entered will be
+" inserted into the current file on the line below
+" the line the cursor is currently on.
+nnoremap <leader>iso :read !
+
+" List buffers
+nnoremap <leader>lb :ls<cr>
+
+" List changes
+nnoremap <leader>lc :changes<cr>
+
+" List registers
+nnoremap <leader>lr :registers<cr>
+
+" Save changes.
+nnoremap <leader>s :write<cr>
+
+" Reset undo history | !BROKEN_MAPPING
+" nnoremap <leader>ru :set undoreload=0 | edit %<cr>
+
+" Find the next function or method definition
+nnoremap <leader>fnf $/function.*(<cr>zz0
+
+" Find next occurrence of word under cursor
+nnoremap <leader>fw lbvey/<c-r>0<cr>
 
