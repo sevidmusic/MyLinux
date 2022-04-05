@@ -67,5 +67,9 @@ nnoremap <leader>s :write<cr>
 " Reset undo history | !BROKEN_MAPPING
 " nnoremap <leader>ru :set undoreload=0 | edit %<cr>
 
-" Find the next
+" Find the next function or method definition
 nnoremap <leader>fnf $/function.*(<cr>zz0
+
+" Find next occurrence of word under cursor
+nnoremap <leader>fw lbvey/<c-r>0<cr>
+

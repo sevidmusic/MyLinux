@@ -32,7 +32,10 @@ alias cr='cargo check && cargo run'
 alias mylinux="/usr/bin/git --git-dir=${HOME}/.MyLinux --work-tree=${HOME}"
 alias rDev="[ -d ${HOME}/dev ] && rm -Rf ${HOME}/dev"
 alias uts='date +"%s"'
+alias cc="wal -c && wal -q -i ${HOME}/Pictures/"
+alias edrc="vim ${HOME}/.darlingrc"
+alias sdrc="source ${HOME}/.darlingrc"
 
 
 # Startup commands
-wal -i "${HOME}/Pictures/MyLoves.png" && clear
+wal -q -i "${HOME}/Pictures/MyLoves.png" && clear
