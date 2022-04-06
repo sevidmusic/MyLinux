@@ -38,4 +38,4 @@ alias sdrc="source ${HOME}/.darlingrc"
 
 
 # Startup commands
-wal -q -i "${HOME}/Pictures/MyLoves.png" && clear
+# wal -q -i "${HOME}/Pictures/MyLoves.png" && clear
