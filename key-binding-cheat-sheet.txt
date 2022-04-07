@@ -1,0 +1,18 @@
+" Terminal (Standard key bindings for most terminals)
+
+" Same as executing `exit`
+<ctrl>d
+
+" Alacritty  Terminal
+
+" In alacritty, typing the following will enter vim, and any commands
+" written into the open buffer will be run on :wq
+" This is useful when a complex set of commands needs to be run,
+" allowing you to write the commands out in vim before executing them.
+<esc><ctrl>v
+
+" Copy selected text
+<ctrl><shift>c
+
+" Paste selected text
+<crtl><shift>v
