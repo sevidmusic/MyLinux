@@ -35,6 +35,7 @@ alias uts='date +"%s"'
 alias cc="wal -c && wal -q -i ${HOME}/Pictures/"
 alias edrc="vim ${HOME}/.darlingrc"
 alias sdrc="source ${HOME}/.darlingrc"
+alias jsonFilesInStorage='find .StoredComponentJsonData/ -type f -name "*.json" | wc -l'
 
 
 # Startup commands
