@@ -1,0 +1,14 @@
+#!/bin/sh
+
+readJson() {
+    /usr/bin/cat "$1" |
+    /usr/bin/json_pp -f json -t dumper -json_opt pretty,utf8,allow_bignum |
+    /home/darling/.cargo/bin/bat
+
+
+}
+
+[ -n "$1" ] && readJson "$1"
+
+
+
