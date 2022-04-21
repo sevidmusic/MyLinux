@@ -32,13 +32,13 @@ nnoremap <leader>nnvm zzo"<esc>o<esc>xinnoremap <\leader><esc>7hx$a
 nnoremap <leader>dl 0Vy<esc>p
 
 " new public class method
-nnoremap <leader>ncm 0opublic function (): void<esc>o{<esc>o}<esc>kk0wwi
+nnoremap <leader>ncm 0opublic function (): void<esc>o{<esc>o}<esc>kk0wwwi
+
+" new protected class method
+nnoremap <leader>nPcm 0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi
 
 " new private class method
 nnoremap <leader>npcm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
-
-" new protected class method | n(ew)s(afe)c(lass)m(ethod)
-nnoremap <leader>nscm 0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwi
 
 " edit $MYVIMRC
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
