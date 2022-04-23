@@ -1,5 +1,7 @@
 #!/bin/sh
 
+clear
+
 # Functions
 
 msg() {
@@ -38,7 +40,9 @@ pathToAppPackageToUpdate="$pathToRoadyAppPackages/$1"
 
 [ ! -d "$pathToAppPackageToUpdate" ] && msg "Moving $pathToNewAppPackage to $pathToAppPackageToUpdate" && mv "$pathToNewAppPackage" "$pathToAppPackageToUpdate"
 
-cd "$pathToRoadyAppPackages" || msgAndExit "Moving into $pathToRoadyAppPackages"
+cd "$pathToRoadyAppPackages" || msgAndExit "Failed to move into $pathToRoadyAppPackages"
 
 git status
+
+msg "The $1 App was updated successfully, the App Package for the $1 App created by the App Packager at $pathToNewAppPackage has been moved to $pathToAppPackageToUpdate"
 
