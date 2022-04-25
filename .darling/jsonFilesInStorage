@@ -1,0 +1,9 @@
+#!/bin/sh
+
+fileCount=$(/usr/bin/find /home/darling/dev/php/roady/.StoredComponentJsonData/ -type f -name "*.json" | wc -l)
+dirCount=$(/usr/bin/find /home/darling/dev/php/roady/.StoredComponentJsonData/ -type d | wc -l)
+adjustedFileCount=$(expr "$fileCount" - 1);
+
+printf '\e[0m\e[105m\e[30mNumber of stored Components:\e[0m    \e[0m\e[105m\e[30mNumber of directories:\e[0m\n'
+printf "\e[0m\e[102m\e[30m%s\e[0m                               \e[0m\e[102m\e[30m%s\e[0m" "$adjustedFileCount" "$dirCount"
+

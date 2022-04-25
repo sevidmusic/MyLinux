@@ -1,0 +1,27 @@
+#!/bin/sh
+
+msg() {
+    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+pathToPhpProjects="$HOME/dev/php"
+pathToRoady="$pathToPhpProjects/roady"
+pathToRoadyStorage="$pathToRoady/.StoredComponentJsonData"
+pathToRoadyAppBuildLogs="$pathToRoady/Apps/.buildLogs"
+
+[ -d "$pathToRoadyStorage" ] &&
+    rm -Rf "$pathToRoadyStorage" &&
+    msg "Removed $pathToRoadyStorage"
+
+[ -d "$pathToRoadyAppBuildLogs" ] &&
+    rm -Rf "$pathToRoadyAppBuildLogs" &&
+    msg "Removed $pathToRoadyAppBuildLogs"
+
+[ -f "$HOME/logs/php/local_php_errors.log" ] &&
+    echo '' > "$HOME/logs/php/local_php_errors.log" &&
+    msg "Cleared log: $HOME/logs/php/local_php_errors.log"

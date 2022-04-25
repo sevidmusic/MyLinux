@@ -1,0 +1,7 @@
+#!/bin/sh
+
+/usr/bin/killall php;
+
+/home/darling/.darling/roadyDevClean &&
+/home/darling/.darling/buildAllApps &&
+/home/darling/.darling/rig --start-server --open-in-browser
