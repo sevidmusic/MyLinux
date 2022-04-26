@@ -1,0 +1,19 @@
+Static method to remove a directory recursively in php:
+
+    public static function removeDirectory(string $dir): void
+    {
+        $protectedPaths = ['/'];
+        if (!in_array($dir, $protectedPaths) && is_dir($dir)) {
+            $ls = scandir($dir);
+            $contents = (is_array($ls) ? $ls : []);
+            foreach ($contents as $item) {
+                if ($item != "." && $item != "..") {
+                    $itemPath = $dir . DIRECTORY_SEPARATOR . $item;
+                    (is_dir($itemPath) === true && is_link($itemPath) === false)
+                        ? self::removeDirectory($itemPath)
+                        : unlink($itemPath);
+                }
+            }
+            rmdir($dir);
+        }
+    }
