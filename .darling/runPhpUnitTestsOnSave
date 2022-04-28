@@ -1,9 +1,17 @@
 #!/bin/sh
-
-# Functions
+#
+# This script will run `phpunit` tests via `entr` whenever
+# a file in roady's core/, Tests/, Apps/*/DynamicOutput,
+# or Apps/*/resources directory is modified, or when
+# roady's index.php file is modified.
+#
+# Usage:
+#
+# runPhpUnitTestsOnSave
+#
 
 msg() {
-    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
 }
 
 msgAndExit() {
@@ -11,21 +19,17 @@ msgAndExit() {
     exit 1
 }
 
-# Variables
-
 pathToPhpProjects="$HOME/dev/php"
 pathToRoady="$pathToPhpProjects/roady"
 pathToPhpUnit="$pathToRoady/vendor/bin/phpunit"
 
 cd "$pathToRoady" || msgAndExit 'roady is not installed'
 
-/usr/bin/find \
+find \
     "$pathToRoady/Tests" \
     "$pathToRoady/core" \
     "$pathToRoady/index.php" \
     "$pathToRoady"/Apps/*/DynamicOutput \
     "$pathToRoady"/Apps/*/resources -type f -name "*.php" |
-    /usr/bin/entr "$pathToPhpUnit" -c "$pathToRoady/php.xml"
-
-
+    entr "$pathToPhpUnit" -c "$pathToRoady/php.xml"
 

@@ -1,7 +1,28 @@
 #!/bin/sh
+#
+# This script will killall php processes, and do the
+# following via roadyDevClean:
+#
+# 1. Remove roady's .StoredComponentJsonData
+# 2. Remove roady's App build logs
+# 3. Clear php's error log
+#
+# It will then build all roady Apps installed in
+# roady's Apps directory via buildAllApps.
+#
+# Finally, it will start a development server at
+#
+# http://localhost:8080 via
+# `rig --start-server --open-in-browser`
+#
+# Usage:
+#
+# resetRoadyDevEnv
+#
 
-/usr/bin/killall php;
+killall php;
 
-/home/darling/.darling/roadyDevClean &&
-/home/darling/.darling/buildAllApps &&
-/home/darling/.darling/rig --start-server --open-in-browser
+roadyDevClean &&
+buildAllApps &&
+rig --start-server --open-in-browser
+

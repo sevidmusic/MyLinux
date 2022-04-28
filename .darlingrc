@@ -36,12 +36,5 @@ alias edrc="vim ${HOME}/.darlingrc"
 alias sdrc="source ${HOME}/.darlingrc"
 alias jfis="while :; do clear && jsonFilesInStorage && sleep 1; done"
 
-
-# Startup commands
-
-# Use pywal to set a random wallpaper, and to set color scheme to
-# match the randomly selected wallpaper.
-# wal -q -i "${HOME}/Pictures/MyLoves.png" && clear
-
-# Use pywal to set color scheme to match current wallpaper
-wal -q -i $(gsettings get org.gnome.desktop.background picture-uri | sed 's#file:\/\/##g' | sed "s/'//g")
+currentPicture=$(gsettings get org.gnome.desktop.background picture-uri | sed 's#file\:\/\/##g' | sed "s#'##g")
+wal --backend colorthief -q -i "$currentPicture"

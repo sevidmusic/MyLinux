@@ -1,11 +1,16 @@
 #!/bin/sh
-
-clear
-
-# Functions
+#
+# This script will replace the specified App Package ($1) in
+# ~/dev/php/roadyAppPackages with the App Package in
+# ~/dev/php/roady/Apps/AppPackager/resources/AppPackages/$1
+#
+# Usage:
+#
+# updateAppPackage NameOfAppPackageToUpdate
+#
 
 msg() {
-    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
 }
 
 msgAndExit() {
@@ -13,9 +18,6 @@ msgAndExit() {
     exit 1
 }
 
-# Variables
-
-#timestamp=$(/usr/bin/date +"%s")
 pathToPhpProjects="$HOME/dev/php"
 pathToRoady="$pathToPhpProjects/roady"
 pathToAppPackager="$pathToRoady/Apps/AppPackager"
@@ -24,6 +26,7 @@ pathToRoadyAppPackages="$pathToPhpProjects/roadyAppPackages"
 pathToNewAppPackage="$pathToAppPackagerPackagedApps/$1"
 pathToAppPackageToUpdate="$pathToRoadyAppPackages/$1"
 
+clear
 
 [ -z ${1+x} ] &&
     msgAndExit "Please specify the name of the App to update."
@@ -34,13 +37,19 @@ pathToAppPackageToUpdate="$pathToRoadyAppPackages/$1"
 [ ! -d "$pathToNewAppPackage" ] &&
     msgAndExit "There isn't an App Package for the $1 App at $pathToNewAppPackage. Make sure to create an App Package for the $1 App using the AppPackager App."
 
-[ ! -d "$pathToRoadyAppPackages" ] && msgAndExit "The roadyAppPackages library must be installed at $pathToRoadyAppPackages"
+[ ! -d "$pathToRoadyAppPackages" ] &&
+    msgAndExit "The roadyAppPackages library must be installed at $pathToRoadyAppPackages"
 
-[ -d "$pathToAppPackageToUpdate" ] && msg "Removing original $pathToAppPackageToUpdate" && rm -Rf "$pathToAppPackageToUpdate"
+[ -d "$pathToAppPackageToUpdate" ] &&
+    msg "Removing original $pathToAppPackageToUpdate" &&
+    rm -Rf "$pathToAppPackageToUpdate"
 
-[ ! -d "$pathToAppPackageToUpdate" ] && msg "Moving $pathToNewAppPackage to $pathToAppPackageToUpdate" && mv "$pathToNewAppPackage" "$pathToAppPackageToUpdate"
+[ ! -d "$pathToAppPackageToUpdate" ] &&
+    msg "Moving $pathToNewAppPackage to $pathToAppPackageToUpdate" &&
+    mv "$pathToNewAppPackage" "$pathToAppPackageToUpdate"
 
-cd "$pathToRoadyAppPackages" || msgAndExit "Failed to move into $pathToRoadyAppPackages"
+cd "$pathToRoadyAppPackages" ||
+    msgAndExit "Failed to move into $pathToRoadyAppPackages"
 
 git status
 

@@ -1,13 +1,25 @@
 #!/bin/bash
+#
+# This script will convert a `.webm` or `.mp4` file into
+# an animated `.gif` via `ffmpeg`.
+#
+# Note: The following stackoverflow post was very helpful in writing this script:
+#
+# https://superuser.com/questions/556029/how-do-i-convert-a-video-to-gif-using-ffmpeg-with-reasonable-quality
+#
+# Usage:
+#
+# convertToGif path/to/video path/to/create/gif
+#
 
 set -o posix
 
 msg() {
-    printf "\n\e[0m\e[105m\e[30m    %s\e[0m\n" "${1}"
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
 }
 
-errorMsg() {
-    msg "${1}"
+msgAndExit() {
+    msg "$1"
     exit 1
 }
 
@@ -15,25 +27,27 @@ acceptedVideoTypes="(webm|mp4)"
 fileToConvertExtension="${1##*.}"
 specifiedGifExtension="${2##*.}"
 
-[[ -z "${1}" ]] && errorMsg "Please specify the path to the mp4 or webm video file to convert as the first argument"
+[[ -z "${1}" ]] &&
+    msgAndExit "Please specify the path to the mp4 or webm video file to convert as the first argument"
 
-[[ -z "${2}" ]] && errorMsg "Please specify the path to create the new gif at as the second argument, including the name of the gif to create"
+[[ -z "${2}" ]] &&
+    msgAndExit "Please specify the path to create the new gif at as the second argument, including the name of the gif to create"
 
-[[ ! -f "${1}" ]] && errorMsg "${1} does not exist"
+[[ ! -f "${1}" ]] &&
+    msgAndExit "${1} does not exist"
 
-[[ -f "${2}" ]] && errorMsg "The path specified to create the new gif at is not available, a file already exists at that path"
+[[ -f "${2}" ]] &&
+    msgAndExit "The path specified to create the new gif at is not available, a file already exists at that path"
 
-[[ -d "${2}" ]] && errorMsg "The path specified to create the new gif at is not available, a directory already exists at that path"
+[[ -d "${2}" ]] &&
+    msgAndExit "The path specified to create the new gif at is not available, a directory already exists at that path"
 
-[[ $fileToConvertExtension =~ $acceptedVideoTypes ]] || errorMsg "${1} does not have a valid video extension, only mp4 and webm are supported"
+[[ $fileToConvertExtension =~ $acceptedVideoTypes ]] ||
+    msgAndExit "${1} does not have a valid video extension, only mp4 and webm are supported"
 
-[[ "${specifiedGifExtension}" != 'gif' ]] && errorMsg "${2} does not use .gif extension"
+[[ "${specifiedGifExtension}" != 'gif' ]] &&
+    msgAndExit "${2} does not use .gif extension"
 
 msg "Preparing to convert ${1} to ${2}. This may take awhile, do not quit until conversion is finished or resulting gif will be corrupted."
-
-# Note: The following stackoverflow post was very helpful in writing this script:
-#
-# https://superuser.com/questions/556029/how-do-i-convert-a-video-to-gif-using-ffmpeg-with-reasonable-quality
-#
 
 ffmpeg -i "${1}" -vf "fps=10,scale=720:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 "${2}"

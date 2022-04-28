@@ -1,9 +1,20 @@
 #!/bin/sh
+#
+# This script will display the number of json files the currently
+# exist in roady's .StoredComponentJsonData directory.
+#
+# It will also display the number of directories.
+#
+# Usage:
+#
+# jsonFilesInStorage
+#
 
-fileCount=$(/usr/bin/find /home/darling/dev/php/roady/.StoredComponentJsonData/ -type f -name "*.json" | wc -l)
-dirCount=$(/usr/bin/find /home/darling/dev/php/roady/.StoredComponentJsonData/ -type d | wc -l)
-adjustedFileCount=$(expr "$fileCount" - 1);
+pathToStoredComponentJsoData="$HOME/dev/php/roady/.StoredComponentJsonData/"
+fileCount=$(find "$pathToStoredComponentJsoData" -type f -name "*.json" | wc -l)
+dirCount=$(find "$pathToStoredComponentJsoData" -type d | wc -l)
+adjustedFileCount=$((fileCount-1));
 
-printf '\e[0m\e[105m\e[30mNumber of stored Components:\e[0m    \e[0m\e[105m\e[30mNumber of directories:\e[0m\n'
-printf "\e[0m\e[102m\e[30m%s\e[0m                               \e[0m\e[102m\e[30m%s\e[0m" "$adjustedFileCount" "$dirCount"
+printf '%bNumber of stored Components:%bNumber of directories:%b' "\e[0m\e[105m\e[30m" "\e[0m    \e[0m\e[105m\e[30m" "\e[0m\n"
+printf "%b%s%b%s%b" "\e[0m\e[102m\e[30m" "$adjustedFileCount" "\e[0m                               \e[0m\e[102m\e[30m" "$dirCount" "\e[0m\n"
 

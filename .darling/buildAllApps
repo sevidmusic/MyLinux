@@ -1,17 +1,21 @@
 #!/bin/sh
-
-# Functions
+#
+# This script will build all the roady Apps the
+# are currently installed in roady's Apps directory.
+#
+# Usage
+#
+# buildAllApps
+#
 
 msg() {
-    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
 }
 
 msgAndExit() {
     msg "$1"
     exit 1
 }
-
-# Variables
 
 pathToPhpProjects="$HOME/dev/php"
 pathToRoady="$pathToPhpProjects/roady"
@@ -26,9 +30,9 @@ availableApps="$pathToRoadyApps/*"
 
 for app in  $availableApps
 do
-    [ -f "$app/Components.php" ] &&
-        /usr/bin/php "$app/Components.php" &&
+    pathToAppsComponentsPhp="$app/Components.php"
+    [ -f "$pathToAppsComponentsPhp" ] &&
+        php "$pathToAppsComponentsPhp" &&
         msg "Finished building the $app App"
 done
-
 

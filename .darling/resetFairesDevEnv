@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# This script will remove the dev directory,
+# install roady, install roadyAppPackages,
+# make the AppInfo, AppPackager, devMenu,
+# and TextAdventureImporter Apps, and reset
+# roady's dev environment via resetRoadyDevEnv,
+#
+# Usage:
+#
+# resetFairesDevEnv
+#
+
+pathToRoadyAppPackages="$HOME/dev/php/roadyAppPackages"
+
+clear
+
+[ -d "$pathToRoadyAppPackages" ] && removeDevDirectory
+
+installRoady &&
+installRoadyAppPackages &&
+rig --make-app-package --path "$pathToRoadyAppPackages/AppInfo/" &&
+rig --make-app-package --path "$pathToRoadyAppPackages/AppPackager/" &&
+rig --make-app-package --path "$pathToRoadyAppPackages/devMenu/" &&
+rig --make-app-package --path "$pathToRoadyAppPackages/TextAdventureImporter/" &&
+resetRoadyDevEnv &&
+printf "%b%s%b" "\n\e[0m\e[105m\e[30m" "Finding fairies development environment has been reset. dev was removed, roady and roadyAppPackages were newly installed, and the AppInfo, AppPackager, devMenu, and TextAdventureImporter Apps have been built." "\e[0m\n"
+

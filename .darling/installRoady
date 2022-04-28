@@ -1,9 +1,15 @@
 #!/bin/sh
-
-# Functions
+#
+# This script will install roady, setup rig, and create
+# and push a new development branch.
+#
+# Usage
+#
+# installRoady
+#
 
 msg() {
-    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
 }
 
 msgAndExit() {
@@ -11,14 +17,17 @@ msgAndExit() {
     exit 1
 }
 
-# Variables
-
 timestamp=$(/usr/bin/date +"%s")
 pathToPhpProjects="$HOME/dev/php"
 pathToRoady="$pathToPhpProjects/roady"
 pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
 newBranchName="roady$timestamp"
-
+pathToPhpUnit="$pathToRoady/vendor/bin/phpunit"
+pathToPhpStan="$pathToRoady/vendor/bin/phpstan"
+pathToRigSymlink="$HOME/.darling/rig"
+pathToRig="$pathToRoady/vendor/darling/rig/bin/rig"
+pathToRoadyAppPackages="$pathToRoady/vendor/darling/roady-app-packages"
+pathToComposer="/home/darling/.local/bin/composer"
 
 [ -d "$pathToRoady" ] && msgAndExit 'Roady is already installed.'
 
@@ -27,45 +36,45 @@ newBranchName="roady$timestamp"
 cd "$pathToPhpProjects" ||
     msgAndExit "Failed to move into $pathToPhpProjects"
 
-/usr/bin/git clone "https://sevidmusic:$pass@github.com/sevidmusic/roady.git"
+git clone "https://sevidmusic:$pass@github.com/sevidmusic/roady.git"
 
 cd "$pathToRoady" ||
     msgAndExit "Failed to move into $pathToRoady"
 
-/home/darling/.local/bin/composer update ||
+"$pathToComposer" update ||
     msgAndExit 'Failed to run composerupdate'
 
-"$pathToRoady/vendor/bin/phpunit" -c "$pathToRoady/php.xml"
+"$pathToPhpUnit" -c "$pathToRoady/php.xml"
 
-"$pathToRoady/vendor/bin/phpstan" analyze --level 8 \
+"$pathToPhpStan" analyze --level 8 \
     "$pathToRoady/index.php" \
     "$pathToRoady/Tests" \
     "$pathToRoady/core"
 
-[ ! -L "$HOME/.darling/rig" ] &&
+[ ! -L "$pathToRigSymlink" ] &&
     ln -s \
-        "$HOME/dev/php/roady/vendor/darling/rig/bin/rig" \
-        "$HOME/.darling/rig"
+        "$pathToRig" \
+        "$pathToRigSymlink"
 
-[ ! -L "$HOME/.darling/rig" ] &&
+[ ! -L "$pathToRigSymlink" ] &&
     msgAndExit 'Failed to create a symlink to rig.'
 
-/usr/bin/git checkout -b "$newBranchName"
-/usr/bin/git push --set-upstream origin "$newBranchName"
+git checkout -b "$newBranchName"
+git push --set-upstream origin "$newBranchName"
 
-"$pathToRoady/vendor/darling/rig/bin/rig" \
+"$pathToRig" \
     --make-app-package \
     --path \
-    "$pathToRoady/vendor/darling/roady-app-packages/roadyDarkTheme"
+    "$pathToRoadyAppPackages/roadyDarkTheme"
 
-"$pathToRoady/vendor/darling/rig/bin/rig" \
+"$pathToRig" \
     --make-app-package \
     --path \
-    "$pathToRoady/vendor/darling/roady-app-packages/roadyThemeTester"
+    "$pathToRoadyAppPackages/roadyThemeTester"
 
 msg "Installed roady at $pathToRoady"
 msg "Ran phpunit tests"
 msg "Ran phpstan tests"
-msg "Created symlink to rig in $HOME/.darling"
+msg "Created symlink to $pathToRig at $pathToRigSymlink"
 msg "Made the roadyDarkTheme and roadyThemeTester apps"
 

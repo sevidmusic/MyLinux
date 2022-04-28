@@ -5,91 +5,96 @@
 #
 #    `pip list | awk '{print $1}' | sed 's/-//g' | sed 's/Package//g' > ~/.darling/upgradePythonPackages`
 #
-# Ideally, refactor to use above command with xargs instead of
-# iterating over each installed package listed in this file
+# @todo: Ideally, refactor to use above command with xargs instead of
+#        iterating over each installed package listed in this file.
+#
+# Usage
+#
+# upgradePythonPackages
+#
 
-/home/darling/.local/bin/pip install beautifulsoup4 --upgrade
-/home/darling/.local/bin/pip install blinker --upgrade
-/home/darling/.local/bin/pip install Brlapi --upgrade
-/home/darling/.local/bin/pip install castero --upgrade
-/home/darling/.local/bin/pip install certifi --upgrade
-/home/darling/.local/bin/pip install chardet --upgrade
-/home/darling/.local/bin/pip install chromegnomeshell --upgrade
-/home/darling/.local/bin/pip install CJKwrap --upgrade
-/home/darling/.local/bin/pip install click --upgrade
-/home/darling/.local/bin/pip install colorama --upgrade
-/home/darling/.local/bin/pip install commandnotfound --upgrade
-/home/darling/.local/bin/pip install cryptography --upgrade
-/home/darling/.local/bin/pip install cupshelpers --upgrade
-/home/darling/.local/bin/pip install dbuspython --upgrade
-/home/darling/.local/bin/pip install defer --upgrade
-/home/darling/.local/bin/pip install distro --upgrade
-/home/darling/.local/bin/pip install evdev --upgrade
-/home/darling/.local/bin/pip install gevent --upgrade
-/home/darling/.local/bin/pip install greenlet --upgrade
-/home/darling/.local/bin/pip install grequests --upgrade
-/home/darling/.local/bin/pip install hidpidaemon --upgrade
-/home/darling/.local/bin/pip install httplib2 --upgrade
-/home/darling/.local/bin/pip install idna --upgrade
-/home/darling/.local/bin/pip install importlibmetadata --upgrade
-/home/darling/.local/bin/pip install jeepney --upgrade
-/home/darling/.local/bin/pip install kernelstub --upgrade
-/home/darling/.local/bin/pip install keyring --upgrade
-/home/darling/.local/bin/pip install languageselector --upgrade
-/home/darling/.local/bin/pip install launchpadlib --upgrade
-/home/darling/.local/bin/pip install lazr.restfulclient --upgrade
-/home/darling/.local/bin/pip install lazr.uri --upgrade
-/home/darling/.local/bin/pip install louis --upgrade
-/home/darling/.local/bin/pip install lxml --upgrade
-/home/darling/.local/bin/pip install macaroonbakery --upgrade
-/home/darling/.local/bin/pip install moreitertools --upgrade
-/home/darling/.local/bin/pip install msgpack --upgrade
-/home/darling/.local/bin/pip install netifaces --upgrade
-/home/darling/.local/bin/pip install oauthlib --upgrade
-/home/darling/.local/bin/pip install pip --upgrade
-/home/darling/.local/bin/pip install poptransition --upgrade
-/home/darling/.local/bin/pip install protobuf --upgrade
-/home/darling/.local/bin/pip install pycairo --upgrade
-/home/darling/.local/bin/pip install pycryptodomex --upgrade
-/home/darling/.local/bin/pip install pycups --upgrade
-/home/darling/.local/bin/pip install pydbus --upgrade
-/home/darling/.local/bin/pip install PyGObject --upgrade
-/home/darling/.local/bin/pip install PyJWT --upgrade
-/home/darling/.local/bin/pip install pymacaroons --upgrade
-/home/darling/.local/bin/pip install PyNaCl --upgrade
-/home/darling/.local/bin/pip install pynvim --upgrade
-/home/darling/.local/bin/pip install pyparsing --upgrade
-/home/darling/.local/bin/pip install pyRFC3339 --upgrade
-/home/darling/.local/bin/pip install pythonapt --upgrade
-/home/darling/.local/bin/pip install pythondebian --upgrade
-/home/darling/.local/bin/pip install pythonmpv --upgrade
-/home/darling/.local/bin/pip install pythonvlc --upgrade
-/home/darling/.local/bin/pip install pythonxlib --upgrade
-/home/darling/.local/bin/pip install pytz --upgrade
-/home/darling/.local/bin/pip install pywal --upgrade
-/home/darling/.local/bin/pip install pyxattr --upgrade
-/home/darling/.local/bin/pip install pyxdg --upgrade
-/home/darling/.local/bin/pip install PyYAML --upgrade
-/home/darling/.local/bin/pip install repolib --upgrade
-/home/darling/.local/bin/pip install repoman --upgrade
-/home/darling/.local/bin/pip install requests --upgrade
-/home/darling/.local/bin/pip install SecretStorage --upgrade
-/home/darling/.local/bin/pip install sessioninstaller --upgrade
-/home/darling/.local/bin/pip install setuptools --upgrade
-/home/darling/.local/bin/pip install six --upgrade
-/home/darling/.local/bin/pip install soupsieve --upgrade
-/home/darling/.local/bin/pip install system76driver --upgrade
-/home/darling/.local/bin/pip install systemdpython --upgrade
-/home/darling/.local/bin/pip install ubuntuadvantagetools --upgrade
-/home/darling/.local/bin/pip install ubuntudriverscommon --upgrade
-/home/darling/.local/bin/pip install ufw --upgrade
-/home/darling/.local/bin/pip install urllib3 --upgrade
-/home/darling/.local/bin/pip install wadllib --upgrade
-/home/darling/.local/bin/pip install wheel --upgrade
-/home/darling/.local/bin/pip install xdg --upgrade
-/home/darling/.local/bin/pip install xkit --upgrade
-/home/darling/.local/bin/pip install youtubedl --upgrade
-/home/darling/.local/bin/pip install zipp --upgrade
-/home/darling/.local/bin/pip install zope.event --upgrade
-/home/darling/.local/bin/pip install zope.interface --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install beautifulsoup4 --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install blinker --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install Brlapi --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install castero --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install certifi --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install chardet --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install chromegnomeshell --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install CJKwrap --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install click --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install colorama --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install commandnotfound --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install cryptography --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install cupshelpers --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install dbuspython --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install defer --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install distro --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install evdev --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install gevent --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install greenlet --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install grequests --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install hidpidaemon --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install httplib2 --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install idna --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install importlibmetadata --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install jeepney --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install kernelstub --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install keyring --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install languageselector --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install launchpadlib --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install lazr.restfulclient --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install lazr.uri --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install louis --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install lxml --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install macaroonbakery --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install moreitertools --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install msgpack --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install netifaces --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install oauthlib --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pip --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install poptransition --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install protobuf --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pycairo --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pycryptodomex --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pycups --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pydbus --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyGObject --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyJWT --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pymacaroons --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyNaCl --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pynvim --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pyparsing --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pyRFC3339 --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pythonapt --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pythondebian --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pythonmpv --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pythonvlc --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pythonxlib --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pytz --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pywal --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pyxattr --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pyxdg --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyYAML --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install repolib --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install repoman --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install requests --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install SecretStorage --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install sessioninstaller --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install setuptools --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install six --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install soupsieve --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install system76driver --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install systemdpython --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install ubuntuadvantagetools --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install ubuntudriverscommon --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install ufw --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install urllib3 --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install wadllib --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install wheel --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install xdg --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install xkit --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install youtubedl --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install zipp --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install zope.event --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install zope.interface --upgrade
 

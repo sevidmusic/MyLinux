@@ -1,9 +1,15 @@
 #!/bin/sh
-
-# Functions
+#
+# This script will install roadyAppPackages, and create
+# and push a new development branch.
+#
+# Usage:
+#
+# installRoadyAppPackages
+#
 
 msg() {
-    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
 }
 
 msgAndExit() {
@@ -11,29 +17,28 @@ msgAndExit() {
     exit 1
 }
 
-# Variables
-
 timestamp=$(/usr/bin/date +"%s")
 pathToPhpProjects="$HOME/dev/php"
 pathToRoadyAppPackages="$pathToPhpProjects/roadyAppPackages"
 pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
 newBranchName="roadyAppPackages$timestamp"
 
+[ -d "$pathToRoadyAppPackages" ] &&
+    msgAndExit 'The roadyAppPackages library is already installed.'
 
-[ -d "$pathToRoadyAppPackages" ] && msgAndExit 'The roadyAppPackages library is already installed.'
-
-[ ! -d "$pathToPhpProjects" ] && mkdir -p "$pathToPhpProjects"
+[ ! -d "$pathToPhpProjects" ] &&
+    mkdir -p "$pathToPhpProjects"
 
 cd "$pathToPhpProjects" ||
     msgAndExit "Failed to move into $pathToPhpProjects"
 
-/usr/bin/git clone "https://sevidmusic:$pass@github.com/sevidmusic/roadyAppPackages.git"
+git clone "https://sevidmusic:$pass@github.com/sevidmusic/roadyAppPackages.git"
 
 cd "$pathToRoadyAppPackages" ||
     msgAndExit "Failed to move into $pathToRoadyAppPackages"
 
-/usr/bin/git checkout -b "$newBranchName"
-/usr/bin/git push --set-upstream origin "$newBranchName"
+git checkout -b "$newBranchName"
+git push --set-upstream origin "$newBranchName"
 
 msg "Installed roadyAppPackages at $pathToRoadyAppPackages"
 

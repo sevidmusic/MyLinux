@@ -1,7 +1,17 @@
 #!/bin/sh
+#
+# This script will do the following:
+# 1. Remove roady's .StoredComponentJsonData
+# 2. Remove roady's App build logs
+# 3. Clear php's error log
+#
+# Usage:
+#
+# roadyDevClean
+#
 
 msg() {
-    printf '\n\n\e[0m\e[105m\e[30m%s\e[0m\n\n' "$1"
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
 }
 
 msgAndExit() {
@@ -13,6 +23,7 @@ pathToPhpProjects="$HOME/dev/php"
 pathToRoady="$pathToPhpProjects/roady"
 pathToRoadyStorage="$pathToRoady/.StoredComponentJsonData"
 pathToRoadyAppBuildLogs="$pathToRoady/Apps/.buildLogs"
+pathToPhpsErrorLog="$HOME/logs/php/local_php_errors.log"
 
 [ -d "$pathToRoadyStorage" ] &&
     rm -Rf "$pathToRoadyStorage" &&
@@ -22,6 +33,7 @@ pathToRoadyAppBuildLogs="$pathToRoady/Apps/.buildLogs"
     rm -Rf "$pathToRoadyAppBuildLogs" &&
     msg "Removed $pathToRoadyAppBuildLogs"
 
-[ -f "$HOME/logs/php/local_php_errors.log" ] &&
-    echo '' > "$HOME/logs/php/local_php_errors.log" &&
-    msg "Cleared log: $HOME/logs/php/local_php_errors.log"
+[ -f "$pathToPhpsErrorLog" ] &&
+    echo '' > "$pathToPhpsErrorLog" &&
+    msg "Cleared log: $pathToPhpsErrorLog"
+

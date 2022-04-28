@@ -1,14 +1,17 @@
 #!/bin/sh
+# This script will display the contents of a json file
+# via `json_pp -f $1 -t dumper -jsno_opt pretty,utf8,allow_bignum`
+#
+# Usage:
+#
+# showJson
+#
 
 readJson() {
-    /usr/bin/cat "$1" |
-    /usr/bin/json_pp -f json -t dumper -json_opt pretty,utf8,allow_bignum |
-    /home/darling/.cargo/bin/bat
-
-
+    cat "$1" |
+    json_pp -f json -t dumper -json_opt pretty,utf8,allow_bignum |
+    bat
 }
 
 [ -n "$1" ] && readJson "$1"
-
-
 

@@ -1,4 +1,12 @@
 #!/bin/sh
+#
+# This script will install and setup composer.
+# It is just here for reference.
+#
+# Whenever you need to re-install composer, visit
+# https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
+# to get the most up to date copy of this script, which is provided by
+# https://getcomposer.org
 
 EXPECTED_CHECKSUM="$(php -r 'copy("https://composer.github.io/installer.sig", "php://stdout");')"
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
