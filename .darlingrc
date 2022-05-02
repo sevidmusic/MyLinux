@@ -6,7 +6,7 @@ PATH="${PATH}:${HOME}/.darling"
 PATH="${PATH}:${HOME}/.local/bin"
 
 # PS#
-PS1='\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;104m\] $ \[\033[01;0m\] '
+PS1='\[\033[01;0m\]\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;104m\] $ \[\033[01;0m\] '
 
 # Vars
 alias c='clear'
@@ -38,3 +38,5 @@ alias jfis="while :; do clear && jsonFilesInStorage && sleep 1; done"
 
 currentPicture=$(gsettings get org.gnome.desktop.background picture-uri | sed 's#file\:\/\/##g' | sed "s#'##g")
 wal --backend colorthief -q -i "$currentPicture"
+
+reset
