@@ -73,3 +73,18 @@ nnoremap <leader>fnf $/function.*(<cr>zz0
 " Find next occurrence of word under cursor
 nnoremap <leader>fw lbvey/<c-r>0<cr>
 
+" Re-map up arrow key to nothing.
+" This will prevent touchpad from scrolling
+" @see https://github.com/neovim/neovim/issues/9511
+"nnoremap <up> <nop>
+
+" Re-map down arrow key to nothing
+" This will prevent touchpad from scrolling
+" @see https://github.com/neovim/neovim/issues/9511
+"nnoremap <down> <nop>
+
+" Re-map left arrow key to nothing
+"nnoremap <left> <nop>
+
+" Re-map right arrow key to nothing
+"nnoremap <right> <nop>
