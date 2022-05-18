@@ -17,3 +17,16 @@ Static method to remove a directory recursively in php:
             rmdir($dir);
         }
     }
+
+
+To change desktop background use:
+
+If dark theme is set as preference in settings:
+
+    `gsettings set org.gnome.desktop.background picture-uri-dark`
+
+If light theme is set as preference in settings:
+
+    `gsettings set org.gnome.desktop.background picture-uri`
+
+@see https://askubuntu.com/questions/1403952/wallpaper-background-switches-back-to-default-when-in-dark-mode-22-04-lts

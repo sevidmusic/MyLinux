@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# This script will change the color scheme using pywal
+#
+# Usage:
+#
+# changeColors /path/to/picture colorBackend
+# changeColors ~/picture.png colorz
+#
+
+pathToPicture="$1"
+colorBackend="$2"
+
+[ ! -f "$pathToPicture" ] && echo "A Picture does not exist at the specified path: $pathToPicture" && exit 1
+
+[ -z "$colorBackend" ] && echo "Please specify a color backend: colorz, colorthief, or wal" && exit 1
+
+wal -c
+wal --backend "$colorBackend" -i "$pathToPicture"
+gsettings set org.gnome.desktop.background picture-uri-dark "$pathToPicture"
+
+

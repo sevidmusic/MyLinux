@@ -35,8 +35,7 @@ alias cc="wal -c && wal -q -i ${HOME}/Pictures/"
 alias edrc="vim ${HOME}/.darlingrc"
 alias sdrc="source ${HOME}/.darlingrc"
 alias jfis="while :; do clear && jsonFilesInStorage && sleep 1; done"
-
-currentPicture=$(gsettings get org.gnome.desktop.background picture-uri | sed 's#file\:\/\/##g' | sed "s#'##g")
-wal --backend colorthief -q -i "$currentPicture"
-
+alias cbcz="wal --backend=colorz -i ${HOME}/Pictures"
+alias cbct="wal --backend=colorthief -i ${HOME}/Pictures"
+alias cbwl="wal --backend=wal -i ${HOME}/Pictures"
 reset
