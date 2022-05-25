@@ -40,7 +40,7 @@ alias jfis='while :; do clear && jsonFilesInStorage && sleep 1; done'
 alias cbcz='wal --backend=colorz -i "${HOME}/Pictures"'
 alias cbct='wal --backend=colorthief -i "${HOME}/Pictures"'
 alias cbwl='wal --backend=wal -i "${HOME}/Pictures"'
-alias rbytes='head -c 5M /dev/urandom | sha1sum'
+alias rbytes='head -c 5M /dev/urandom | sha1sum | sed "s/-//g" | sed "s/ //g"'
 
 # Make sure colors match background image
 
