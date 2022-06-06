@@ -33,7 +33,7 @@ find \
     "$pathToRoadyApps"/*/DynamicOutput \
     "$pathToRoadyApps"/*/resources \
     -type f -name "*.php" |
-    entr "$pathToPhpStan" analyze --level 8 \
+    entr "$pathToPhpStan" analyze --level 9 \
     "$pathToRoady/Tests" \
     "$pathToRoady/core" \
     "$pathToRoady/index.php" \
