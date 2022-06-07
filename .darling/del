@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# Functions
+
+msg() {
+    printf "\n%b%b%b%s%b\n\n" "\e[0m" "\e[105m" "\e[30m" "$1" "\e[0m"
+}
+
+msgAndExit() {
+    msg "$1" && exit "$2"
+}
+
+# Variables
+
+itemToDelete="$1"
+
+# Logic
+
+[ "$itemToDelete" = '/' ] &&
+    msgAndExit 'WARNING: You cannot delete /' 1
+
+[ "$itemToDelete" = "$HOME" ] &&
+    msgAndExit "WARNING: You cannot delete $HOME" 1
+
+[ "$itemToDelete" = ~/ ] &&
+    msgAndExit "WARNING: You cannot delete $HOME" 1
+
+[ "$itemToDelete" = ./ ] &&
+    msgAndExit "WARNING: You cannot delete the current working directory" 1
+
+[ ! -d "$itemToDelete" ] &&
+    [ ! -f "$itemToDelete" ] &&
+    msgAndExit "$itemToDelete does not exist" 1
+
+
+msg "Are you sure you want to delete $itemToDelete?"
+msg '(enter "Y" to confirm, or any other key to cancel)'
+read -r performDeletion
+
+[ ! "$performDeletion" = 'Y' ] &&
+    msgAndExit "$itemToDelete was not deleted." 0
+
+[ "$performDeletion" = 'Y' ] &&
+    rm -Rf "$itemToDelete" &&
+    msgAndExit "Deleted $itemToDelete" 0
+
