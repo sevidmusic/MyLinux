@@ -27,7 +27,7 @@ alias gds='git diff --stat'
 alias gpu='printf "\n\e[0m\e[105m\e[30mAre you sure that you want to push your changes to github? (y|n)\e[0m\n"; read c; [ "${c}" == "y" ] && git push -u'
 alias sshDarlingDev='ssh darling@104.237.146.46'
 alias gs='echo "gs disabled via an alias defined in ~/.darlingrc"'
-alias cmx='cmatrix -su 7'
+alias cmx='cmatrix -su 11'
 alias cat='bat'
 alias cr='cargo check && cargo run'
 alias mylinux='/usr/bin/git --git-dir="${HOME}/.MyLinux" --work-tree="${HOME}"'
@@ -41,6 +41,7 @@ alias cbcz='wal --backend=colorz -i "${HOME}/Pictures"'
 alias cbct='wal --backend=colorthief -i "${HOME}/Pictures"'
 alias cbwl='wal --backend=wal -i "${HOME}/Pictures"'
 alias rbytes='head -c 5M /dev/urandom | sha1sum | sed "s/-//g" | sed "s/ //g"'
+alias myip='ifconfig wlo1 | grep "inet "'
 
 # Make sure colors match background image
 
@@ -48,4 +49,4 @@ alias rbytes='head -c 5M /dev/urandom | sha1sum | sed "s/-//g" | sed "s/ //g"'
     currentWallpaper=$(gsettings get org.gnome.desktop.background picture-uri-dark | sed "s/'//g") &&
     [ -f "$currentWallpaper" ] &&
     wal -c &&
-    wal -q --backend=colorthief -i "$currentWallpaper"
+    wal -q --backend=colorz -i "$currentWallpaper"

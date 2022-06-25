@@ -25,6 +25,15 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Normal Mode Mappings
 
+" Enable/disable cursorline and cursorcolumn
+:nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+" Enable/disable spellcheck
+:nnoremap <Leader>sc :set spell!<CR>
+
+" Enable/disable line numbers and relative line numbers
+:nnoremap <Leader>ln :set number! relativenumber!<CR>
+
 " define new normal mode mapping
 nnoremap <leader>nnvm zzo"<esc>o<esc>xinnoremap <\leader><esc>7hx$a
 
@@ -39,6 +48,9 @@ nnoremap <leader>nPcm 0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi
 
 " new private class method
 nnoremap <leader>npcm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
+
+" new php doc comment
+nnoremap <leader>dcm o/**<esc>o<esc>o/<esc>khxxxa
 
 " edit $MYVIMRC
 nnoremap <leader>ev :tabe $MYVIMRC<cr>

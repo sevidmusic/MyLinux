@@ -29,5 +29,5 @@ find \
     "$pathToRoady/tests" \
     "$pathToRoady/src" \
     -type f -name "*.php" |
-    entr "$pathToPhpUnit" -c "$pathToRoady/php.xml"
+    entr -c "$pathToPhpUnit" -c "$pathToRoady/php.xml"
 
