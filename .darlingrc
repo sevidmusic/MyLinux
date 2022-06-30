@@ -42,6 +42,7 @@ alias cbct='wal --backend=colorthief -i "${HOME}/Pictures"'
 alias cbwl='wal --backend=wal -i "${HOME}/Pictures"'
 alias rbytes='head -c 5M /dev/urandom | sha1sum | sed "s/-//g" | sed "s/ //g"'
 alias myip='ifconfig wlo1 | grep "inet "'
+alias smon='sudo tcpdump -i'
 
 # Make sure colors match background image
 
