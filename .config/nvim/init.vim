@@ -52,6 +52,9 @@ nnoremap <leader>npcm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
 " new php doc comment
 nnoremap <leader>dcm o/**<esc>o<esc>o/<esc>khxxxa
 
+" new php interface
+nnoremap <leader>pi ggi<?php<esc>o<esc>o/**<esc>oDescription<esc>o<esc>k0i <esc>o<esc>oMethods<esc>o<esc>o/<esc>o<esc>ointerface<esc>o{<esc>o<esc>o}<esc>o<esc>Gddgg3j<esc>
+
 " edit $MYVIMRC
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
 
