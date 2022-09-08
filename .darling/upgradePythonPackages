@@ -13,14 +13,21 @@
 # upgradePythonPackages
 #
 
+
+/usr/bin/python3 /home/darling/.local/bin/pip install pip --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install Brlapi --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install CJKwrap --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyGObject --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyJWT --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyNaCl --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install PyYAML --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install SecretStorage --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install beautifulsoup4 --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install blinker --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install Brlapi --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install castero --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install certifi --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install chardet --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install chromegnomeshell --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install CJKwrap --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install click --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install colorama --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install commandnotfound --upgrade
@@ -51,20 +58,16 @@
 /usr/bin/python3 /home/darling/.local/bin/pip install msgpack --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install netifaces --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install oauthlib --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install pip --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install poptransition --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install protobuf --upgrade
+/usr/bin/python3 /home/darling/.local/bin/pip install pyRFC3339 --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pycairo --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pycryptodomex --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pycups --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pydbus --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install PyGObject --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install PyJWT --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pymacaroons --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install PyNaCl --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pynvim --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pyparsing --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install pyRFC3339 --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pythonapt --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pythondebian --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pythonmpv --upgrade
@@ -74,11 +77,9 @@
 /usr/bin/python3 /home/darling/.local/bin/pip install pywal --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pyxattr --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install pyxdg --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install PyYAML --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install repolib --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install repoman --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install requests --upgrade
-/usr/bin/python3 /home/darling/.local/bin/pip install SecretStorage --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install sessioninstaller --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install setuptools --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install six --upgrade
@@ -97,4 +98,3 @@
 /usr/bin/python3 /home/darling/.local/bin/pip install zipp --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install zope.event --upgrade
 /usr/bin/python3 /home/darling/.local/bin/pip install zope.interface --upgrade
-
