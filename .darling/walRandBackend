@@ -2,9 +2,9 @@
 #
 # NOTE: `bash` is used instead of `sh` on purpose in this script.
 #
-# This script randomly change the color scheme using pywal
-# every 17 seconds to match a randomly selected picture
-# from ~/Pictures using a randomly selected color backend.
+# This script changes the color scheme using pywal
+# to match the specified picture using a randomly selected color
+# backend.
 #
 # Usage:
 #
