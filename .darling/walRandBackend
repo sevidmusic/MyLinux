@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# NOTE: `bash` is used instead of `sh` on purpose in this script.
+#
+# This script randomly change the color scheme using pywal
+# every 17 seconds to match a randomly selected picture
+# from ~/Pictures using a randomly selected color backend.
+#
+# Usage:
+#
+# loopWal
+#
+
+msg() {
+    printf "%b%s%b" "\e[0m\e[105m\e[30m\n" "${1:-No Message}" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "${1:-No exit message}"
+    exit "${2:-1}"
+}
+
+image="${1}"
+colorBackends=("wal" "colorz" "colorthief")
+colorBackend=${colorBackends[ $RANDOM % ${#colorBackends[@]} ]}
+
+[ -z "$image" ] && msgAndExit "Please specify a path to an image."
+
+[ ! -f "$image" ] && msgAndExit "Please specify a path to an existing image."
+
+[ ! "$(identify "$image" | awk '{print $2}')" == 'JPEG' ] && msgAndExit "Please specify a path to an actual image."
+
+changeColors "$image" "$colorBackend"
+
