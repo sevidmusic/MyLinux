@@ -28,6 +28,7 @@ cd "$pathToRoady" || msgAndExit 'roady is not installed'
 find \
     "$pathToRoady/tests" \
     "$pathToRoady/src" \
+    "$pathToRoady/devTools" \
     -type f -name "*.php" |
     entr -c "$pathToPhpStan"
 
