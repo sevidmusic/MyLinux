@@ -50,4 +50,4 @@ alias smon='sudo tcpdump -i'
     currentWallpaper=$(gsettings get org.gnome.desktop.background picture-uri-dark | sed "s/'//g") &&
     [ -f "$currentWallpaper" ] &&
     wal -c &&
-    wal -q --backend=colorz -i "$currentWallpaper"
+    wal -q --backend=colorthief -i "$currentWallpaper"
