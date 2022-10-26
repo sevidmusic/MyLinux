@@ -43,20 +43,8 @@ nnoremap <leader>dl 0Vy<esc>p
 " new public class method
 nnoremap <leader>ncm 0opublic function (): void<esc>o{<esc>o}<esc>kk0wwwi
 
-" new protected class method
-nnoremap <leader>nPcm 0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi
-
-" new private class method
-nnoremap <leader>npcm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
-
 " new php doc comment
 nnoremap <leader>dcm o/**<esc>o<esc>o/<esc>khxxxa
-
-" new php interface
-nnoremap <leader>pi ggi<?php<esc>o<esc>o/**<esc>oDescription<esc>o<esc>k0i <esc>o<esc>oMethods<esc>o<esc>o/<esc>o<esc>ointerface<esc>o{<esc>o<esc>o}<esc>o<esc>Gddgg3j<esc>
-
-" new php class
-nnoremap <leader>pc ggi<?php<esc>o<esc>o/**<esc>oDescription<esc>o<esc>k0i <esc>o<esc>oMethods<esc>o<esc>o/<esc>o<esc>oclass<esc>o{<esc>o<esc>o}<esc>o<esc>Gddgg3j<esc>
 
 " edit $MYVIMRC
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
@@ -82,27 +70,33 @@ nnoremap <leader>lr :registers<cr>
 " Save changes.
 nnoremap <leader>s :write<cr>
 
-" Reset undo history | !BROKEN_MAPPING
-" nnoremap <leader>ru :set undoreload=0 | edit %<cr>
-
 " Find the next function or method definition
 nnoremap <leader>fnf $/function.*(<cr>zz0
 
 " Find next occurrence of word under cursor
 nnoremap <leader>fw lbvey/<c-r>0<cr>
 
-" Re-map up arrow key to nothing.
-" This will prevent touchpad from scrolling
-" @see https://github.com/neovim/neovim/issues/9511
-"nnoremap <up> <nop>
+" Plugins
 
-" Re-map down arrow key to nothing
-" This will prevent touchpad from scrolling
-" @see https://github.com/neovim/neovim/issues/9511
-"nnoremap <down> <nop>
+" Install vim-plug if not found
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
 
-" Re-map left arrow key to nothing
-"nnoremap <left> <nop>
+call plug#begin()
 
-" Re-map right arrow key to nothing
-"nnoremap <right> <nop>
+" Third party color schemes
+Plug 'fcpg/vim-fahrenheit'
+
+" File system plugins
+Plug 'preservim/nerdtree'
+
+call plug#end()
+
+" Plugin Mappings
+" Toggle NerdTree
+nnoremap <leader>a :NERDTreeToggle<cr>
+
+" Plugin Settings
+colorscheme fahrenheit
+
