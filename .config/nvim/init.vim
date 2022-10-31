@@ -97,6 +97,15 @@ Plug 'SirVer/ultisnips'
 " Snippets for the Snippet plugin:
 Plug 'honza/vim-snippets'
 
+" Linter plugin
+Plug 'dense-analysis/ale'
+
+" Better status bar. vim-airline
+Plug 'vim-airline/vim-airline'
+
+" Themes for vim-airline
+Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 " Plugin Mappings
@@ -108,5 +117,14 @@ colorscheme fahrenheit
 
 " Ultisnips settings
 let g:UltiSnipsExpandTrigger="<c-j>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:ultisnips_php_scalar_types = 1
+
+" ALE settings
+" Allow ALE to show status via vim-airline
+let g:airline#extensions#ale#enabled = 1
+
+" vim-ariline settings
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
