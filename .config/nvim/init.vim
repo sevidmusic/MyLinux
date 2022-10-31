@@ -91,6 +91,12 @@ Plug 'fcpg/vim-fahrenheit'
 " File system plugins
 Plug 'preservim/nerdtree'
 
+" Code Snippet plugin.
+Plug 'SirVer/ultisnips'
+
+" Snippets for the Snippet plugin:
+Plug 'honza/vim-snippets'
+
 call plug#end()
 
 " Plugin Mappings
@@ -100,3 +106,7 @@ nnoremap <leader>a :NERDTreeToggle<cr>
 " Plugin Settings
 colorscheme fahrenheit
 
+" Ultisnips settings
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
