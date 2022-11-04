@@ -20,6 +20,10 @@ set nowrap
 " Add a color column at line 70
 set colorcolumn=70
 
+set cursorline
+
+set cursorcolumn
+
 " Auto Commands
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -106,6 +110,9 @@ Plug 'vim-airline/vim-airline'
 " Themes for vim-airline
 Plug 'vim-airline/vim-airline-themes'
 
+" Theme repo with a variety of themes
+Plug 'rafi/awesome-vim-colorschemes'
+
 call plug#end()
 
 " Plugin Mappings
@@ -113,7 +120,7 @@ call plug#end()
 nnoremap <leader>a :NERDTreeToggle<cr>
 
 " Plugin Settings
-colorscheme fahrenheit
+colorscheme wombat256mod
 
 " Ultisnips settings
 let g:UltiSnipsExpandTrigger="<c-j>"
