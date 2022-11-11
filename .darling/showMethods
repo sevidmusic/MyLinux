@@ -17,8 +17,6 @@ msgAndExit() {
 [ ! "php" = "${1##*.}" ] &&
     msgAndExit "Please specify a path to a valid .php file" 1
 
-clear
-
 msg "The following methods are defined by $1"
 
-grep "p.*function.*$" "$1"
+grep -P "^    (public|private|protected|abstract|final).*function.*$" "$1"

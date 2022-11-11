@@ -47,6 +47,12 @@ nnoremap <leader>dl 0Vy<esc>p
 " new public class method
 nnoremap <leader>ncm 0opublic function (): void<esc>o{<esc>o}<esc>kk0wwwi
 
+" new protected class method
+nnoremap <leader>npm 0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi
+
+" new private class method
+nnoremap <leader>nsm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
+
 " new php doc comment
 nnoremap <leader>dcm o/**<esc>o<esc>o/<esc>khxxxa
 
@@ -120,7 +126,7 @@ call plug#end()
 nnoremap <leader>a :NERDTreeToggle<cr>
 
 " Plugin Settings
-colorscheme wombat256mod
+colorscheme jellybeans
 
 " Ultisnips settings
 let g:UltiSnipsExpandTrigger="<c-j>"
