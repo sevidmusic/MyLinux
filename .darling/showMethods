@@ -19,4 +19,4 @@ msgAndExit() {
 
 msg "The following methods are defined by $1"
 
-grep -P "^    (public|private|protected|abstract|final).*function.*$" "$1"
+msg "$(grep -P "^    (public|private|protected|abstract|final).*function.*$" "$1")";
