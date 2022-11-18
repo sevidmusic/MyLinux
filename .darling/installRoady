@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# This script will install roady, setup rig, and create
+# This script will install roady and create
 # and push a new development branch.
 #
 # Usage
@@ -24,9 +24,6 @@ pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
 newBranchName="roady$timestamp"
 pathToPhpUnit="$pathToRoady/vendor/bin/phpunit"
 pathToPhpStan="$pathToRoady/vendor/bin/phpstan"
-pathToRigSymlink="$HOME/.darling/rig"
-pathToRig="$pathToRoady/vendor/darling/rig/bin/rig"
-pathToRoadyAppPackages="$pathToRoady/vendor/darling/roady-app-packages"
 pathToComposer="/home/darling/.local/bin/composer"
 
 [ -d "$pathToRoady" ] && msgAndExit 'Roady is already installed.'
@@ -46,35 +43,14 @@ cd "$pathToRoady" ||
 
 "$pathToPhpUnit" -c "$pathToRoady/php.xml"
 
-"$pathToPhpStan" analyze --level 8 \
-    "$pathToRoady/index.php" \
-    "$pathToRoady/Tests" \
-    "$pathToRoady/core"
-
-[ ! -L "$pathToRigSymlink" ] &&
-    ln -s \
-        "$pathToRig" \
-        "$pathToRigSymlink"
-
-[ ! -L "$pathToRigSymlink" ] &&
-    msgAndExit 'Failed to create a symlink to rig.'
+"$pathToPhpStan" analyze --level 9 \
+    "$pathToRoady/src" \
+    "$pathToRoady/tests"
 
 git checkout -b "$newBranchName"
 git push --set-upstream origin "$newBranchName"
 
-"$pathToRig" \
-    --make-app-package \
-    --path \
-    "$pathToRoadyAppPackages/roadyDarkTheme"
-
-"$pathToRig" \
-    --make-app-package \
-    --path \
-    "$pathToRoadyAppPackages/roadyThemeTester"
-
 msg "Installed roady at $pathToRoady"
 msg "Ran phpunit tests"
 msg "Ran phpstan tests"
-msg "Created symlink to $pathToRig at $pathToRigSymlink"
-msg "Made the roadyDarkTheme and roadyThemeTester apps"
 
