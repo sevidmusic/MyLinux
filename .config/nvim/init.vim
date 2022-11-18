@@ -86,6 +86,12 @@ nnoremap <leader>fnf $/function.*(<cr>zz0
 " Find next occurrence of word under cursor
 nnoremap <leader>fw lbvey/<c-r>0<cr>
 
+" turn a snake into a camel
+nnoremap <Leader>+ mmviw:s/\%V_\(.\)/\U\1/g<CR>:nohlsearch<CR>`m
+
+" turn a camel into a snake
+nnoremap <Leader>_ mmviw:s/\%V\(\u\)/_\L\1/g<CR>:nohlsearch<CR>`m
+
 " Plugins
 
 " Install vim-plug if not found
