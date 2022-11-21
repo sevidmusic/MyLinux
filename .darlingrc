@@ -28,7 +28,7 @@ alias gpu='printf "\n\e[0m\e[105m\e[30mAre you sure that you want to push your c
 alias sshDarlingDev='ssh darling@104.237.146.46'
 alias gs='echo "gs disabled via an alias defined in ~/.darlingrc"'
 alias cmx='cmatrix -su 11'
-alias cat='bat'
+alias cat='bat --style plain'
 alias cr='cargo check && cargo run'
 alias mylinux='/usr/bin/git --git-dir="${HOME}/.MyLinux" --work-tree="${HOME}"'
 alias rDev='printf "\n\e[0m\e[105m\e[30mAre you sure that you want to delete the ${HOME}/dev directory, which includes the current development version of roady? (y|n)\e[0m\n"; read c; [ "$c" == "y" ] && [ -d ${HOME}/dev ] && rm -Rf ${HOME}/dev'
