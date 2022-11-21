@@ -92,6 +92,19 @@ nnoremap <Leader>+ mmviw:s/\%V_\(.\)/\U\1/g<CR>:nohlsearch<CR>`m
 " turn a camel into a snake
 nnoremap <Leader>_ mmviw:s/\%V\(\u\)/_\L\1/g<CR>:nohlsearch<CR>`m
 
+" Show the methods defined by the current file by calling showMethods
+" Requires the following script:
+" [~/.darling/showMethods](https://github.com/sevidmusic/MyLinux/blob/PopOS/.darling/showMethods)
+nnoremap <leader>sm :!showMethods %<cr>
+
+" Print the methods defined by the current file by calling showMethods
+" Requires the following script:
+" [~/.darling/showMethods](https://github.com/sevidmusic/MyLinux/blob/PopOS/.darling/showMethods)
+nnoremap <leader>spm :read !showMethods %<cr>
+
+" Show git status
+nnoremap <leader>gst :!git status<cr>
+
 " Plugins
 
 " Install vim-plug if not found
