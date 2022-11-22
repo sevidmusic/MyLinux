@@ -100,10 +100,38 @@ nnoremap <leader>sm :!showMethods %<cr>
 " Print the methods defined by the current file by calling showMethods
 " Requires the following script:
 " [~/.darling/showMethods](https://github.com/sevidmusic/MyLinux/blob/PopOS/.darling/showMethods)
-nnoremap <leader>spm :read !showMethods %<cr>
+nnoremap <leader>spm i/**<esc>:read !showMethods %<cr>o*/<esc>
 
 " Show git status
 nnoremap <leader>gst :!git status<cr>
+
+" View ~/.config/nvim/init.vim in a buffer
+nnoremap <leader>kb :!cat ~/.config/nvim/init.vim<cr>gg
+
+" Select the current line and all lines up to and including the
+" previous occurrence of:
+"
+" /**
+"
+nnoremap <leader>spc V?\/\*\*<cr>
+
+" Perform a text search on the selected text
+"
+" The following stackoverflow post was helped me figure out
+" this mapping:
+"
+" https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
+"
+vnoremap <leader>ts y/<c-r>"<cr>
+
+" Perform a plain text search on the selected text
+"
+" The following stackoverflow post was helped me figure out
+" this mapping:
+"
+" https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
+"
+vnoremap <leader>pts y/\V<c-r>"<cr>
 
 " Plugins
 
