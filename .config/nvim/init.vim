@@ -1,5 +1,9 @@
 " Settings
 
+" Prevent vim from asking if you want to save everytime you leave
+" a modified buffer.
+set hidden
+
 " Set tab to actually be 4 spaces | @see
 " https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces for a
 " good explanation.
@@ -25,6 +29,8 @@ set cursorline
 set cursorcolumn
 
 " Auto Commands
+
+" Remove trailing spaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Normal Mode Mappings
@@ -77,9 +83,6 @@ nnoremap <leader>lc :changes<cr>
 " List registers
 nnoremap <leader>lr :registers<cr>
 
-" Save changes.
-nnoremap <leader>s :write<cr>
-
 " Find the next function or method definition
 nnoremap <leader>fnf $/function.*(<cr>zz0
 
@@ -99,11 +102,20 @@ nnoremap <leader>sm :!showMethods %<cr>
 
 " Print the methods defined by the current file by calling showMethods
 " Requires the following script:
+"
+" Note: This will also sort the methods using vim's sort function.
+"
 " [~/.darling/showMethods](https://github.com/sevidmusic/MyLinux/blob/PopOS/.darling/showMethods)
-nnoremap <leader>spm i/**<esc>:read !showMethods %<cr>o*/<esc>
+nnoremap <leader>spm m1i/**<esc>:read !showMethods %<cr>o*/<esc>m2kdd`1jdd0V`2k:sort<cr><esc>0
 
 " Show git status
 nnoremap <leader>gst :!git status<cr>
+
+" Show git diff
+nnoremap <leader>gdf :!git diff<cr>
+
+" Show git add all changes
+nnoremap <leader>gaa :!git add . <cr>
 
 " View ~/.config/nvim/init.vim in a buffer
 nnoremap <leader>kb :!cat ~/.config/nvim/init.vim<cr>gg
@@ -132,6 +144,48 @@ vnoremap <leader>ts y/<c-r>"<cr>
 " https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
 "
 vnoremap <leader>pts y/\V<c-r>"<cr>
+
+" Close current file
+nnoremap <leader>q :q<cr>
+
+" Close all
+nnoremap <leader>qa :qa<cr>
+
+" Write current file
+nnoremap <leader>w :w<cr>
+
+" Write all open files
+nnoremap <leader>wa :wa<cr>
+
+" Write current file and quit
+nnoremap <leader>wq :wq<cr>
+
+" Write current file and clear the undo history.
+nnoremap <leader>W :w<cr>:set undoreload=0<cr>:edit<cr>
+
+" Write all open files and clear the undo history.
+nnoremap <leader>Wa :wa<cr>:set undoreload=0<cr>:edit<cr>
+
+" Write and quit all files
+nnoremap <leader>wqa :wqa<cr>
+
+" Move to the next buffer
+nnoremap <leader>nb :bnext<cr>
+
+" Move to the previous buffer
+nnoremap <leader>pb :bprevious<cr>
+
+" Enter :colorscheme prompt
+nnoremap <leader>cc :colorscheme
+
+" Initiate the wal loop
+"
+" Note, this mapping requires the following scripts:
+"
+" https://github.com/sevidmusic/MyLinux/blob/PopOS/.darling/loopWal
+" https://github.com/sevidmusic/MyLinux/blob/PopOS/.darling/changeColors
+"
+nnoremap <leader>lw :!loopWal<cr>
 
 " Plugins
 
@@ -173,7 +227,7 @@ call plug#end()
 nnoremap <leader>a :NERDTreeToggle<cr>
 
 " Plugin Settings
-colorscheme jellybeans
+colorscheme challenger_deep
 
 " Ultisnips settings
 let g:UltiSnipsExpandTrigger="<c-j>"
