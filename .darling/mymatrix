@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#
+# This script emulates the cmatirix program in bash.
+#
+# Usage:
+#
+# mymatix
+#
+# Note: You may need to call `reset` or `tput sgr0` after this
+# script is run
+
+# Set the terminal title to "CMatrix"
+echo -ne "\033]0;CMatrix\007"
+
+# Set the terminal background color to black
+tput setab 0
+
+# Clear the terminal screen
+clear
+
+# Set the terminal cursor to invisible
+tput civis
+
+# Loop indefinitely, printing a random multicolored character on a black background
+while :; do
+    # Generate a random number between 1 and 7 for the text color
+    color=$((RANDOM % 7 + 1))
+
+    # Generate a random ASCII character between ! and ~ (inclusive)
+    # and set the text color using the generated number
+    char="$(printf '\\x%x' $((RANDOM % 94 + 33)))$(tput setaf $color)"
+
+    # Print the character at a random location on the terminal screen
+    tput cup $((RANDOM % $(tput lines))) $((RANDOM % $(tput cols)))
+    printf "%b" "$char"
+
+done
+
+# Reset the terminal text color to its default value
+tput sgr0
+
