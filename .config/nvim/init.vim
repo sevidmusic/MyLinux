@@ -47,6 +47,9 @@ autocmd BufWritePre * :%s/\s\+$//e
 " define new normal mode mapping
 nnoremap <leader>nnvm zzo"<esc>o<esc>xinnoremap <\leader><esc>7hx$a
 
+" define new normal mode mapping
+nnoremap <leader>nvvm zzo"<esc>o<esc>xivnoremap <\leader><esc>7hx$a
+
 " duplicate current line
 nnoremap <leader>dl 0Vy<esc>p
 
@@ -61,6 +64,9 @@ nnoremap <leader>nsm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
 
 " new php doc comment
 nnoremap <leader>dcm o/**<esc>o<esc>o/<esc>khxxxa
+
+" new php method/function doc comment
+nnoremap <leader>mcm o/**<esc>o<esc>o/<esc>khxxxa [Description]<esc>o<esc>o@return<esc>o<esc>o@example<esc>o<esc>o```<esc><esc>o<esc>o```<esc>o<esc>
 
 " edit $MYVIMRC
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
@@ -127,24 +133,6 @@ nnoremap <leader>kb :!cat ~/.config/nvim/init.vim<cr>gg
 "
 nnoremap <leader>spc V?\/\*\*<cr>
 
-" Perform a text search on the selected text
-"
-" The following stackoverflow post was helped me figure out
-" this mapping:
-"
-" https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
-"
-vnoremap <leader>ts y/<c-r>"<cr>
-
-" Perform a plain text search on the selected text
-"
-" The following stackoverflow post was helped me figure out
-" this mapping:
-"
-" https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
-"
-vnoremap <leader>pts y/\V<c-r>"<cr>
-
 " Close current file
 nnoremap <leader>q :q<cr>
 
@@ -175,6 +163,9 @@ nnoremap <leader>nb :bnext<cr>
 " Move to the previous buffer
 nnoremap <leader>pb :bprevious<cr>
 
+" Select a buffer by entering it's assigned numeric id
+nnoremap <leader>sb :buffer<space>
+
 " Enter :colorscheme prompt
 nnoremap <leader>cc :colorscheme
 
@@ -186,6 +177,26 @@ nnoremap <leader>cc :colorscheme
 " https://github.com/sevidmusic/MyLinux/blob/PopOS/.darling/changeColors
 "
 nnoremap <leader>lw :!loopWal<cr>
+
+" Visual mode mappings
+
+" Perform a text search on the selected text
+"
+" The following stackoverflow post was helped me figure out
+" this mapping:
+"
+" https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
+"
+vnoremap <leader>ts y/<c-r>"<cr>
+
+" Perform a plain text search on the selected text
+"
+" The following stackoverflow post was helped me figure out
+" this mapping:
+"
+" https://superuser.com/questions/41378/how-to-search-for-selected-text-in-vim
+"
+vnoremap <leader>pts y/\V<c-r>"<cr>
 
 " Plugins
 
@@ -226,9 +237,6 @@ call plug#end()
 " Toggle NerdTree
 nnoremap <leader>a :NERDTreeToggle<cr>
 
-" Plugin Settings
-colorscheme challenger_deep
-
 " Ultisnips settings
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
@@ -242,3 +250,29 @@ let g:airline#extensions#ale#enabled = 1
 " vim-ariline settings
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
+
+" Setting that must be set after plugins
+
+" Plugin Settings
+colorscheme purify
+
+" Favorite Color Schemes:
+" challenger_deep
+" purify
+"
+
+" Functions
+
+""""""" Cycle Through Favorite Color Schemes """""""
+function! CycleColorSchemes()
+  let current_scheme = g:colors_name
+  let schemes = ['purify', 'challenger_deep', 'jellybeans', 'solarized8']
+  let index = index(schemes, current_scheme)
+  let next_scheme = schemes[(index + 1) % len(schemes)]
+  execute "colorscheme " . next_scheme
+  echo next_scheme
+endfunction
+
+"
+nnoremap <F5> :call CycleColorSchemes()<CR>
+""""""" End Cycle Through Favorite Color Schemes """""""
