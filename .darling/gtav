@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# This script will search the ~/gta5cheats.md file and return the
+# any lines that match the specified pattern as well as the line
+# immediately following a matching line.
+#
+# Usage:
+#
+# ```
+# gtav ow
+#
+# ```
+#
+# Example output:
+#
+# ```
+# Slow Motion Aim:
+# SQUARE, L2, R1, TRIANGLE, LEFT, SQUARE, L2, RIGHT, X
+# --
+# Lower Wanted:
+# Level: R1, R1, CIRCLE, R2, RIGHT, LEFT, RIGHT, LEFT, RIGHT, LEFT
+# --
+# Slow Motion:
+# TRIANGLE, LEFT, RIGHT, RIGHT, SQUARE, R2, R1
+#
+# ```
+#
+
+grep --extended-regexp --ignore-case -A 1 "$1" ~/gta5cheats.md
