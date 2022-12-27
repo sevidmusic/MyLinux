@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# Functions
+
+# updateWal()
+#
+# Update pywal to use current desktop background
+# image as color scheeme source
+#
+function updateWal()
+{
+    currentWallpaper=$(gsettings get org.gnome.desktop.background picture-uri-dark | sed "s/'//g") &&
+    [ -f "$currentWallpaper" ] &&
+    wal -c &&
+    wal -q --backend=colorthief -i "$currentWallpaper"
+}
+
 # Options
 set -o vi
 
@@ -26,28 +41,25 @@ alias gdf='git diff'
 alias gds='git diff --stat'
 alias gpu='printf "\n\e[0m\e[105m\e[30mAre you sure that you want to push your changes to github? (y|n)\e[0m\n"; read c; [ "${c}" == "y" ] && git push -u'
 alias sshDarlingDev='ssh darling@104.237.146.46'
-alias gs='echo "gs disabled via an alias defined in ~/.darlingrc"'
+alias gs='echo "gs is disabled via an alias defined in ~/.darlingrc"'
 alias cmx='cmatrix -su 11'
 alias cat='bat --style plain'
-alias cr='cargo check && cargo run'
 alias mylinux='/usr/bin/git --git-dir="${HOME}/.MyLinux" --work-tree="${HOME}"'
-alias rDev='printf "\n\e[0m\e[105m\e[30mAre you sure that you want to delete the ${HOME}/dev directory, which includes the current development version of roady? (y|n)\e[0m\n"; read c; [ "$c" == "y" ] && [ -d ${HOME}/dev ] && rm -Rf ${HOME}/dev'
 alias uts='date +"%s"'
-alias cc='wal -c && wal -q -i ${HOME}/Pictures/'
 alias edrc='vim ${HOME}/.darlingrc'
 alias sdrc='source ${HOME}/.darlingrc'
-alias jfis='while :; do clear && jsonFilesInStorage && sleep 1; done'
-alias cbcz='wal --backend=colorz -i "${HOME}/Pictures"'
-alias cbct='wal --backend=colorthief -i "${HOME}/Pictures"'
-alias cbwl='wal --backend=wal -i "${HOME}/Pictures"'
 alias rbytes='head -c 5M /dev/urandom | sha1sum | sed "s/-//g" | sed "s/ //g"'
 alias myip='ifconfig wlo1 | grep "inet "'
 alias smon='sudo tcpdump -i'
 
 # Make sure colors match background image
 
-[ -z "$TMUX" ] &&
-    currentWallpaper=$(gsettings get org.gnome.desktop.background picture-uri-dark | sed "s/'//g") &&
-    [ -f "$currentWallpaper" ] &&
-    wal -c &&
-    wal -q --backend=colorthief -i "$currentWallpaper"
+[ -z "$TMUX" ] && updateWal;
+
+# show todo list
+echo "Todo: "
+echo
+td list
+echo
+echo "To view todo: td list | To add todo: td add "todo" | To remove todo: td done <int>"
+
