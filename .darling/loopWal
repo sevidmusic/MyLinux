@@ -16,7 +16,9 @@ waitTime="${1:-10}"
 
 while :
 do
-    colorBackend=${colorBackends[ $RANDOM % ${#colorBackends[@]} ]}
+    # Uncomment to use a random color backend
+    # colorBackend=${colorBackends[ $RANDOM % ${#colorBackends[@]} ]}
+    colorBackend="colorthief"
     randomImage=$(find ~/Pictures/ -type f | sort -R | tail -1)
     changeColors "$randomImage" "$colorBackend"
     sleep "$waitTime"
