@@ -36,13 +36,13 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Normal Mode Mappings
 
 " Enable/disable cursorline and cursorcolumn
-:nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+:nnoremap <leader>c :set cursorline! cursorcolumn!<cr>
 
 " Enable/disable spellcheck
-:nnoremap <Leader>sc :set spell!<CR>
+:nnoremap <leader>sc :set spell!<cr>
 
 " Enable/disable line numbers and relative line numbers
-:nnoremap <Leader>ln :set number! relativenumber!<CR>
+:nnoremap <leader>ln :set number! relativenumber!<cr>
 
 " define new normal mode mapping
 nnoremap <leader>nnvm zzo"<esc>o<esc>xinnoremap <\leader><esc>7hx$a
@@ -96,10 +96,10 @@ nnoremap <leader>fnf $/function.*(<cr>zz0
 nnoremap <leader>fw lbvey/<c-r>0<cr>
 
 " turn a snake into a camel
-nnoremap <Leader>+ mmviw:s/\%V_\(.\)/\U\1/g<CR>:nohlsearch<CR>`m
+nnoremap <leader>+ mmviw:s/\%V_\(.\)/\U\1/g<cr>:nohlsearch<cr>`m
 
 " turn a camel into a snake
-nnoremap <Leader>_ mmviw:s/\%V\(\u\)/_\L\1/g<CR>:nohlsearch<CR>`m
+nnoremap <leader>_ mmviw:s/\%V\(\u\)/_\L\1/g<cr>:nohlsearch<cr>`m
 
 " Show the methods defined by the current file by calling showMethods
 " Requires the following script:
@@ -121,7 +121,7 @@ nnoremap <leader>gst :!git status<cr>
 nnoremap <leader>gdf :!git diff<cr>
 
 " Show git add all changes
-nnoremap <leader>gaa :!git add . <cr>
+nnoremap <leader>gaa :!git add . <cr><cr>:echo "added changes to git"<cr>
 
 " View ~/.config/nvim/init.vim in a buffer
 nnoremap <leader>kb :!cat ~/.config/nvim/init.vim<cr>gg
@@ -274,5 +274,5 @@ function! CycleColorSchemes()
 endfunction
 
 "
-nnoremap <F5> :call CycleColorSchemes()<CR>
+nnoremap <F5> :call CycleColorSchemes()<cr>
 """"""" End Cycle Through Favorite Color Schemes """""""
