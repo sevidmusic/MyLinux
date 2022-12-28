@@ -264,15 +264,26 @@ colorscheme purify
 " Functions
 
 """"""" Cycle Through Favorite Color Schemes """""""
-function! CycleColorSchemes()
+function! CycleColorSchemesForward()
   let current_scheme = g:colors_name
-  let schemes = ['purify', 'challenger_deep', 'jellybeans', 'solarized8']
+  let schemes = ['256_noir', 'OceanicNext', 'OceanicNextLight', 'PaperColor', 'abstract', 'afterglow', 'alduin', 'anderson', 'angr', 'apprentice', 'archery', 'atom', 'ayu', 'carbonized-dark', 'carbonized-light', 'challenger_deep', 'deep-space', 'deus', 'dogrun', 'fahrenheit', 'flattened_dark', 'flattened_light', 'focuspoint', 'fogbell', 'fogbell_light', 'fogbell_lite', 'github', 'gotham', 'gotham256', 'gruvbox', 'happy_hacking', 'hybrid', 'hybrid_material', 'hybrid_reverse', 'iceberg', 'jellybeans', 'lightning', 'lucid', 'lucius', 'materialbox', 'meta5', 'minimalist', 'molokai', 'molokayo', 'mountaineer', 'mountaineer-grey', 'mountaineer-light', 'nord', 'oceanic_material', 'one', 'one-dark', 'onedark', 'onehalfdark', 'onehalflight', 'orange-moon', 'orbital', 'paramount', 'parsec', 'pink-moon', 'purify', 'pyte', 'rakr', 'rdark-terminal2', 'scheakur', 'seoul256', 'seoul256-light', 'sierra', 'snow', 'solarized8', 'solarized8_flat', 'solarized8_high', 'solarized8_low', 'sonokai', 'space-vim-dark', 'spacecamp', 'spacecamp_lite', 'stellarized', 'sunbather', 'tender', 'termschool', 'twilight256', 'two-firewatch', 'wombat256mod', 'yellow-moon']
   let index = index(schemes, current_scheme)
   let next_scheme = schemes[(index + 1) % len(schemes)]
   execute "colorscheme " . next_scheme
   echo next_scheme
 endfunction
 
-"
-nnoremap <F5> :call CycleColorSchemes()<cr>
+function! CycleColorSchemesBackward()
+  let current_scheme = g:colors_name
+  let schemes = ['yellow-moon', 'wombat256mod', 'two-firewatch', 'twilight256', 'termschool', 'tender', 'sunbather', 'stellarized', 'spacecamp_lite', 'spacecamp', 'space-vim-dark', 'sonokai', 'solarized8_low', 'solarized8_high', 'solarized8_flat', 'solarized8', 'snow', 'sierra', 'seoul256-light', 'seoul256', 'scheakur', 'rdark-terminal2', 'rakr', 'pyte', 'purify', 'pink-moon', 'parsec', 'paramount', 'orbital', 'orange-moon', 'onehalflight', 'onehalfdark', 'onedark', 'one-dark', 'one', 'oceanic_material', 'nord', 'mountaineer-light', 'mountaineer-grey', 'mountaineer', 'molokayo', 'molokai', 'minimalist', 'meta5', 'materialbox', 'lucius', 'lucid', 'lightning', 'jellybeans', 'iceberg', 'hybrid_reverse', 'hybrid_material', 'hybrid', 'happy_hacking', 'gruvbox', 'gotham256', 'gotham', 'github', 'fogbell_lite', 'fogbell_light', 'fogbell', 'focuspoint', 'flattened_light', 'flattened_dark', 'fahrenheit', 'dogrun', 'deus', 'deep-space', 'challenger_deep', 'carbonized-light', 'carbonized-dark', 'ayu', 'atom', 'archery', 'apprentice', 'angr', 'anderson', 'alduin', 'afterglow', 'abstract', 'PaperColor', 'OceanicNextLight', 'OceanicNext', '256_noir']
+  let index = index(schemes, current_scheme)
+  let next_scheme = schemes[(index + 1) % len(schemes)]
+  execute "colorscheme " . next_scheme
+  echo next_scheme
+endfunction
+
+" Set keybindings for function calls
+nnoremap <F5> :call CycleColorSchemesBackward()<cr>
+nnoremap <F6> :call CycleColorSchemesForward()<cr>
+
 """"""" End Cycle Through Favorite Color Schemes """""""
