@@ -254,7 +254,7 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 " Setting that must be set after plugins
 
 " Plugin Settings
-colorscheme purify
+colorscheme paramount
 
 " Favorite Color Schemes:
 " challenger_deep
