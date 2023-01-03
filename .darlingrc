@@ -51,6 +51,7 @@ alias sdrc='source ${HOME}/.darlingrc'
 alias rbytes='head -c 5M /dev/urandom | sha1sum | sed "s/-//g" | sed "s/ //g"'
 alias myip='ifconfig wlo1 | grep "inet "'
 alias smon='sudo tcpdump -i'
+alias chess='telnet freechess.org'
 
 # Make sure colors match background image
 
@@ -61,5 +62,5 @@ echo "Todo: "
 echo
 td list
 echo
-echo "To view todo: td list | To add todo: td add "todo" | To remove todo: td done <int>"
+echo "To view todo: td list | To add todo: td add \"todo\" | To remove todo: td done <int>"
 
