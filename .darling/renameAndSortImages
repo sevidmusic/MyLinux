@@ -1,0 +1,41 @@
+#!/bin/bash
+
+fileIsAnImage() {
+    file="$1"
+    # Check if the file is an image file
+    if file --mime-type "$file" | grep -qE 'image/(jpeg|png|gif|bmp|webp)'; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Set the directory where the images are located
+dir="${1}"
+
+# backup the directory
+cp -r "$dir" "$dir.backup"
+
+[ ! -d "$dir" ] && echo "Please specify an existing directory" && exit 1
+
+# Set the base name for the images
+baseName="image"
+
+# Set the starting number for the images
+num=1
+
+# Set the file extension for the images
+ext=".png"
+
+# Loop through all the image files in the directory
+for file in "$dir"/*
+do
+    if fileIsAnImage "$file"; then
+        echo "Converting and renaming $file to $baseName$num$ext"
+        ffmpeg -i "$file" "$dir/$baseName$num$ext"
+        echo "Removing $file"
+        rm "$file"
+    fi
+    ((num++))
+done
+
