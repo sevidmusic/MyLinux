@@ -27,6 +27,7 @@ PS1='\[\033[01;0m\]\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033
 
 # Vars
 alias c='clear'
+alias gfav='gtav "(slow|fast|inv|weap|abi|super)"'
 alias ls='exa'
 alias more='less -R'
 alias less='less -R'

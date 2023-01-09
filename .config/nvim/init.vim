@@ -254,19 +254,17 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 " Setting that must be set after plugins
 
 " Plugin Settings
-colorscheme paramount
-
-" Favorite Color Schemes:
-" challenger_deep
-" purify
-"
+colorscheme atom
 
 " Functions
+
+let g:cschemes = ['atom', 'OceanicNext', 'afterglow', 'deep-space', 'focuspoint', 'gotham256', 'iceberg', 'tender', 'termschool', 'twilight256']
 
 """"""" Cycle Through Favorite Color Schemes """""""
 function! CycleColorSchemesForward()
   let current_scheme = g:colors_name
-  let schemes = ['256_noir', 'OceanicNext', 'OceanicNextLight', 'PaperColor', 'abstract', 'afterglow', 'alduin', 'anderson', 'angr', 'apprentice', 'archery', 'atom', 'ayu', 'carbonized-dark', 'carbonized-light', 'challenger_deep', 'deep-space', 'deus', 'dogrun', 'fahrenheit', 'flattened_dark', 'flattened_light', 'focuspoint', 'fogbell', 'fogbell_light', 'fogbell_lite', 'github', 'gotham', 'gotham256', 'gruvbox', 'happy_hacking', 'hybrid', 'hybrid_material', 'hybrid_reverse', 'iceberg', 'jellybeans', 'lightning', 'lucid', 'lucius', 'materialbox', 'meta5', 'minimalist', 'molokai', 'molokayo', 'mountaineer', 'mountaineer-grey', 'mountaineer-light', 'nord', 'oceanic_material', 'one', 'one-dark', 'onedark', 'onehalfdark', 'onehalflight', 'orange-moon', 'orbital', 'paramount', 'parsec', 'pink-moon', 'purify', 'pyte', 'rakr', 'rdark-terminal2', 'scheakur', 'seoul256', 'seoul256-light', 'sierra', 'snow', 'solarized8', 'solarized8_flat', 'solarized8_high', 'solarized8_low', 'sonokai', 'space-vim-dark', 'spacecamp', 'spacecamp_lite', 'stellarized', 'sunbather', 'tender', 'termschool', 'twilight256', 'two-firewatch', 'wombat256mod', 'yellow-moon']
+  " Uncomment to use all installed color schemes: let schemes = ['256_noir', 'OceanicNext', 'OceanicNextLight', 'PaperColor', 'abstract', 'afterglow', 'alduin', 'anderson', 'angr', 'apprentice', 'archery', 'atom', 'ayu', 'carbonized-dark', 'carbonized-light', 'challenger_deep', 'deep-space', 'deus', 'dogrun', 'fahrenheit', 'flattened_dark', 'flattened_light', 'focuspoint', 'fogbell', 'fogbell_light', 'fogbell_lite', 'github', 'gotham', 'gotham256', 'gruvbox', 'happy_hacking', 'hybrid', 'hybrid_material', 'hybrid_reverse', 'iceberg', 'jellybeans', 'lightning', 'lucid', 'lucius', 'materialbox', 'meta5', 'minimalist', 'molokai', 'molokayo', 'mountaineer', 'mountaineer-grey', 'mountaineer-light', 'nord', 'oceanic_material', 'one', 'one-dark', 'onedark', 'onehalfdark', 'onehalflight', 'orange-moon', 'orbital', 'paramount', 'parsec', 'pink-moon', 'purify', 'pyte', 'rakr', 'rdark-terminal2', 'scheakur', 'seoul256', 'seoul256-light', 'sierra', 'snow', 'solarized8', 'solarized8_flat', 'solarized8_high', 'solarized8_low', 'sonokai', 'space-vim-dark', 'spacecamp', 'spacecamp_lite', 'stellarized', 'sunbather', 'tender', 'termschool', 'twilight256', 'two-firewatch', 'wombat256mod', 'yellow-moon']
+  let schemes = g:cschemes
   let index = index(schemes, current_scheme)
   let next_scheme = schemes[(index + 1) % len(schemes)]
   execute "colorscheme " . next_scheme
@@ -275,7 +273,8 @@ endfunction
 
 function! CycleColorSchemesBackward()
   let current_scheme = g:colors_name
-  let schemes = ['yellow-moon', 'wombat256mod', 'two-firewatch', 'twilight256', 'termschool', 'tender', 'sunbather', 'stellarized', 'spacecamp_lite', 'spacecamp', 'space-vim-dark', 'sonokai', 'solarized8_low', 'solarized8_high', 'solarized8_flat', 'solarized8', 'snow', 'sierra', 'seoul256-light', 'seoul256', 'scheakur', 'rdark-terminal2', 'rakr', 'pyte', 'purify', 'pink-moon', 'parsec', 'paramount', 'orbital', 'orange-moon', 'onehalflight', 'onehalfdark', 'onedark', 'one-dark', 'one', 'oceanic_material', 'nord', 'mountaineer-light', 'mountaineer-grey', 'mountaineer', 'molokayo', 'molokai', 'minimalist', 'meta5', 'materialbox', 'lucius', 'lucid', 'lightning', 'jellybeans', 'iceberg', 'hybrid_reverse', 'hybrid_material', 'hybrid', 'happy_hacking', 'gruvbox', 'gotham256', 'gotham', 'github', 'fogbell_lite', 'fogbell_light', 'fogbell', 'focuspoint', 'flattened_light', 'flattened_dark', 'fahrenheit', 'dogrun', 'deus', 'deep-space', 'challenger_deep', 'carbonized-light', 'carbonized-dark', 'ayu', 'atom', 'archery', 'apprentice', 'angr', 'anderson', 'alduin', 'afterglow', 'abstract', 'PaperColor', 'OceanicNextLight', 'OceanicNext', '256_noir']
+  let schemes = g:cschemes
+  sort reverse(schemes)
   let index = index(schemes, current_scheme)
   let next_scheme = schemes[(index + 1) % len(schemes)]
   execute "colorscheme " . next_scheme
