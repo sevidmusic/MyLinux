@@ -274,9 +274,8 @@ endfunction
 function! CycleColorSchemesBackward()
   let current_scheme = g:colors_name
   let schemes = g:cschemes
-  sort reverse(schemes)
   let index = index(schemes, current_scheme)
-  let next_scheme = schemes[(index + 1) % len(schemes)]
+  let next_scheme = schemes[(index - 1) % len(schemes)]
   execute "colorscheme " . next_scheme
   echo next_scheme
 endfunction
