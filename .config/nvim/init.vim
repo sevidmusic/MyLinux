@@ -169,6 +169,9 @@ nnoremap <leader>sb :buffer<space>
 " Enter :colorscheme prompt
 nnoremap <leader>cc :colorscheme
 
+" Begin a search for a function
+nnoremap <leader>ff /function.*
+
 " Initiate the wal loop
 "
 " Note, this mapping requires the following scripts:
