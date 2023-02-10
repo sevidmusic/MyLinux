@@ -1,12 +1,12 @@
 #!/bin/sh
 #
 # This script will run `phpunit` tests via `entr` whenever
-# a file in either PhpUnitTestUtilities's src/ or tests/
+# a file in either PHPUnitTestUtilities's src/ or tests/
 # directoy is modified.
 #
 # Usage:
 #
-# runPhpUnitTestsOnSavePhpUnitTestUtilities
+# runPHPUnitTestsOnSavePHPUnitTestUtilities
 #
 
 msg() {
@@ -19,14 +19,14 @@ msgAndExit() {
 }
 
 pathToPhpProjects="$HOME/Git"
-pathToPhpUnitTestUtilities="$pathToPhpProjects/PhpUnitTestUtilities"
-pathToPhpUnit="$pathToPhpUnitTestUtilities/vendor/bin/phpunit"
+pathToPHPUnitTestUtilities="$pathToPhpProjects/PHPUnitTestUtilities"
+pathToPhpUnit="$pathToPHPUnitTestUtilities/vendor/bin/phpunit"
 
-cd "$pathToPhpUnitTestUtilities" || msgAndExit 'PhpUnitTestUtilities is not installed'
+cd "$pathToPHPUnitTestUtilities" || msgAndExit 'PHPUnitTestUtilities is not installed'
 
 find \
-    "$pathToPhpUnitTestUtilities/tests" \
-    "$pathToPhpUnitTestUtilities/src" \
+    "$pathToPHPUnitTestUtilities/tests" \
+    "$pathToPHPUnitTestUtilities/src" \
     -type f -name "*.php" |
-    entr -c "$pathToPhpUnit" -c "$pathToPhpUnitTestUtilities/php.xml"
+    entr -c "$pathToPhpUnit" -c "$pathToPHPUnitTestUtilities/php.xml"
 

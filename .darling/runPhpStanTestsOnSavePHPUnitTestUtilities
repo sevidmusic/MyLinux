@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# This script will run `phpstan` tests via `entr` whenever
+# a file in PHPUnitTestUtilities's src/ or Tests/ directory
+# is modified.
+#
+# Usage:
+#
+# runPHPStanTestsOnSavePHPUnitTestUtilties
+#
+
+msg() {
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+pathToPHPProjects="$HOME/Git"
+pathToPHPUnitTestUtilites="$pathToPHPProjects/PHPUnitTestUtilities"
+pathToPHPStan="$pathToPHPUnitTestUtilites/vendor/bin/phpstan"
+
+cd "$pathToPHPUnitTestUtilites" || msgAndExit 'PHPUnitTestUtilities is not installed'
+
+find \
+    "$pathToPHPUnitTestUtilites/tests" \
+    "$pathToPHPUnitTestUtilites/src" \
+    "$pathToPHPUnitTestUtilites/devTools" \
+    -type f -name "*.php" |
+    entr -c "$pathToPHPStan"
+
