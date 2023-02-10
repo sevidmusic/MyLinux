@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# This script will install phpUnitTestUtilities and create
+# and push a new development branch.
+#
+# Usage
+#
+# installPHPUnitTestUtilities
+#
+
+msg() {
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+timestamp=$(/usr/bin/date +"%s")
+pathToGitProjects="$HOME/Git"
+pathToPHPUnitTestUtilities="$pathToGitProjects/PHPUnitTestUtilities"
+pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
+newBranchName="PHPUnitTestUtilities$timestamp"
+pathToPhpUnit="$pathToPHPUnitTestUtilities/vendor/bin/phpunit"
+pathToPhpStan="$pathToPHPUnitTestUtilities/vendor/bin/phpstan"
+pathToComposer="/home/darling/.local/bin/composer"
+
+[ -d "$pathToPHPUnitTestUtilities" ] && msgAndExit 'PHPUnitTestUtilities is already installed.'
+
+[ ! -d "$pathToGitProjects" ] && mkdir -p "$pathToGitProjects"
+
+cd "$pathToGitProjects" ||
+    msgAndExit "Failed to move into $pathToGitProjects"
+
+git clone "https://sevidmusic:$pass@github.com/sevidmusic/PHPUnitTestUtilities.git"
+
+cd "$pathToPHPUnitTestUtilities" ||
+    msgAndExit "Failed to move into $pathToPHPUnitTestUtilities"
+
+"$pathToComposer" update ||
+    msgAndExit 'Failed to run composer update'
+
+"$pathToPhpUnit" -c "$pathToPHPUnitTestUtilities/php.xml"
+
+"$pathToPhpStan" analyze --level 9 \
+    "$pathToPHPUnitTestUtilities/src" \
+    "$pathToPHPUnitTestUtilities/tests"
+
+git checkout -b "$newBranchName"
+git push --set-upstream origin "$newBranchName"
+
+msg "Installed PHPUnitTestUtilities at $pathToPHPUnitTestUtilities"
+msg "Ran phpunit tests"
+msg "Ran phpstan tests"
+
