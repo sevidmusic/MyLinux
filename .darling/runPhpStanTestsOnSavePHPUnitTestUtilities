@@ -19,15 +19,15 @@ msgAndExit() {
 }
 
 pathToPHPProjects="$HOME/Git"
-pathToPHPUnitTestUtilites="$pathToPHPProjects/PHPUnitTestUtilities"
-pathToPHPStan="$pathToPHPUnitTestUtilites/vendor/bin/phpstan"
+pathToPHPTestUtilities="$pathToPHPProjects/PHPUnitTestUtilities"
+pathToPHPStan="$pathToPHPTestUtilities/vendor/bin/phpstan"
 
-cd "$pathToPHPUnitTestUtilites" || msgAndExit 'PHPUnitTestUtilities is not installed'
+cd "$pathToPHPTestUtilities" || msgAndExit 'PHPUnitTestUtilities is not installed'
 
 find \
-    "$pathToPHPUnitTestUtilites/tests" \
-    "$pathToPHPUnitTestUtilites/src" \
-    "$pathToPHPUnitTestUtilites/devTools" \
+    "$pathToPHPTestUtilities/tests" \
+    "$pathToPHPTestUtilities/src" \
+    "$pathToPHPTestUtilities/devTools" \
     -type f -name "*.php" |
     entr -c "$pathToPHPStan"
 

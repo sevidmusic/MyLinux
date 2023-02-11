@@ -18,7 +18,7 @@ msgAndExit() {
 }
 
 timestamp=$(/usr/bin/date +"%s")
-pathToPhpProjects="$HOME/dev/php"
+pathToPhpProjects="$HOME/Git"
 pathToRoady="$pathToPhpProjects/roady"
 pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
 newBranchName="roady$timestamp"

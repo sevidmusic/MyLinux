@@ -41,6 +41,11 @@ read -r performDeletion
     msgAndExit "$itemToDelete was not deleted." 0
 
 [ "$performDeletion" = 'Y' ] &&
+    [ -f "$itemToDelete" ] &&
+    shred -n17 --remove "$itemToDelete" &&
+    msgAndExit "Deleted file: $itemToDelete" 0
+
+[ "$performDeletion" = 'Y' ] &&
     rm -Rf "$itemToDelete" &&
-    msgAndExit "Deleted $itemToDelete" 0
+    msgAndExit "Deleted directory: $itemToDelete" 0
 
