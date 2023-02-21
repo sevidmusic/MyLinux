@@ -1,0 +1,14 @@
+# Set the background to black and the text to white
+echo -e "\033[30;47m"
+
+# Print all the color codes
+for i in {0..255}; do
+    # Set the text color
+    printf "%b" "\033[38;5;${i}m"
+    # Print the color code and reset the text color
+    printf "%b" "${i}\033[0m "
+done
+
+# Reset the background color
+echo -e "\033[0m"
+

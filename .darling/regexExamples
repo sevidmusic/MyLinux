@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Define the table as a numerically indexed array.
+table=(
+    '. Matches any single character except newline.'
+    '    Example: a.b matches "axb", but not "a\nb".'
+    '^ Matches the start of the string.'
+    '    Example: ^a matches "abc", but not "xabc".'
+    '$ Matches the end of the string.'
+    '    Example: c$ matches "abc", but not "abx".'
+    '* Matches 0 or more occurrences of the preceding character.'
+    '    Example: a*b matches "ab", "aab", "aaab", etc.'
+    '+ Matches 1 or more occurrences of the preceding character.'
+    '    Example: a+b matches "ab", "aab", "aaab", etc., but not "b".'
+    '? Matches 0 or 1 occurrence of the preceding character.'
+    '    Example: a?b matches "ab" or "b", but not "aab".'
+    '{m} Matches exactly m occurrences of the preceding character.'
+    '    Example: a{2}b matches "aab", but not "ab" or "aaab".'
+    '{m,} Matches m or more occurrences of the preceding character.'
+    '    Example: a{2,}b matches "aab", "aaab", "aaaab", etc.'
+    '{m,n} Matches between m and n occurrences of the preceding character.'
+    '    Example: a{2,3}b matches "aab" or "aaab", but not "ab" or "aaaab".'
+    '[] Matches any character inside the square brackets.'
+    '    Example: [abc] matches "a", "b", or "c".'
+    '| Matches either the expression before or after the |.'
+    '    Example: a|b matches "a" or "b".'
+    '() Groups expressions together.'
+    '    Example: (abc)+ matches "abc", "abcabc", etc.'
+    '\\ Escapes special characters.'
+    '    Example: \. matches ".".'
+)
+
+tput setab 0
+tput setaf 202
+figlet -f pagga "RegEx Examples"
+tput setaf 207
+# Print the table.
+for key in "${!table[@]}"; do
+    printf " %s \n" "${table[$key]}"
+done
+tput sgr0
+

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Check if pandoc is installed
+if ! [ -x "$(command -v pandoc)" ]; then
+  echo 'Error: pandoc is not installed.' >&2
+  exit 1
+fi
+
+# Check if input file is specified
+if [ -z "$1" ]; then
+  echo 'Error: no input file specified.' >&2
+  exit 1
+fi
+
+# Set output file name
+output_file="${1%.*}.md"
+
+# Convert HTML to Markdown
+pandoc "$1" -f html -t markdown -o "$output_file"
+
+echo "Converted $1 to $output_file"
+

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Set variables for Oneonta, NY
+url="https://openweathermap.org/data/2.5/weather?id=2643743&appid=439d4b804bc8187953eb36d2a8c26a02"
+
+# Get temperature from OpenWeatherMap API
+celsius="$(curl -s "$url" | grep -o '"temp":[^,}]*' | awk -F: '{print $2}' | cut -d. -f1)"
+temperature=$(echo "scale=2; ($celsius * 1.8) + 32" | bc)
+
+while :
+    do
+        # Print results
+        clear
+        echo ''
+        echo ''
+        echo ''
+        tput setab 0
+        tput setaf 202
+        figlet -f pagga "$temperature Degrees"
+        sleep 60
+        tput sgr0
+        echo ''
+    done;
