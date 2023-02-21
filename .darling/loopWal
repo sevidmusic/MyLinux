@@ -22,19 +22,25 @@ msgAndExit() {
 
 colorBackends=("wal" "colorz" "colorthief")
 waitTime="${1:-10}"
-show="${2:-no}"
+show="${2:-show}"
 
 while :
 do
     # Uncomment to use a random color backend
-    # colorBackend=${colorBackends[ $RANDOM % ${#colorBackends[@]} ]}
-    colorBackend="colorthief"
+    colorBackend=${colorBackends[ $RANDOM % ${#colorBackends[@]} ]}
+
+    # Uncomment to use a specific color backend
+    #colorBackend="colorthief"
+
+    # Select a random image from ~/Pictures
     randomImage=$(find ~/Pictures/ -type f | sort -R | tail -1)
+
     changeColors "$randomImage" "$colorBackend"
-    [ "${2}" == 'show' ] &&
+    [ "$show" == 'show' ] &&
         clear &&
         msg "loopwal is running (use ctrl-c to exit)" &&
         msg "Image: $randomImage | Backend: $colorBackend"
+
     sleep "$waitTime"
 done
 

@@ -19,7 +19,7 @@ msgAndExit() {
     exit 1
 }
 
-pathToPhpProjects="$HOME/dev/php"
+pathToPhpProjects="$HOME/Git"
 pathToRoady="$pathToPhpProjects/roady"
 pathToPhpUnit="$pathToRoady/vendor/bin/phpunit"
 

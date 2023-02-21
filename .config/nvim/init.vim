@@ -257,11 +257,11 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 " Setting that must be set after plugins
 
 " Plugin Settings
-colorscheme atom
+colorscheme iceberg
 
 " Functions
 
-let g:cschemes = ['atom', 'OceanicNext', 'afterglow', 'deep-space', 'focuspoint', 'gotham256', 'iceberg', 'tender', 'termschool', 'twilight256']
+let g:cschemes = ['afterglow', 'focuspoint', 'iceberg', 'tender', 'termschool', 'twilight256']
 
 """"""" Cycle Through Favorite Color Schemes """""""
 function! CycleColorSchemesForward()
