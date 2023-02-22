@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set variables for Oneonta, NY
-url="https://openweathermap.org/data/2.5/weather?id=2643743&appid=439d4b804bc8187953eb36d2a8c26a02"
+url="https://openweathermap.org/data/2.5/weather?weather?id=5129852&appid=439d4b804bc8187953eb36d2a8c26a02"
 
 # Get temperature from OpenWeatherMap API
 celsius="$(curl -s "$url" | grep -o '"temp":[^,}]*' | awk -F: '{print $2}' | cut -d. -f1)"
