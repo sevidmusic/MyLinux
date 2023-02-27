@@ -261,7 +261,7 @@ colorscheme darling1
 
 " Functions
 
-let g:cschemes = ['darling1', 'afterglow', 'focuspoint', 'iceberg', 'tender', 'termschool', 'twilight256']
+let g:cschemes = ['darling1', 'tender', 'afterglow', 'focuspoint', 'iceberg', 'termschool', 'twilight256']
 
 """"""" Cycle Through Favorite Color Schemes """""""
 function! CycleColorSchemesForward()
