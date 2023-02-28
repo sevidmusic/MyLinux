@@ -16,7 +16,7 @@ LEFT, LEFT, L1, RIGHT, RIGHT, R2, LEFT, L2, RIGHT
 Lower ( :) ) Wanted:
 Level: R1, R1, CIRCLE, R2, RIGHT, LEFT, RIGHT, LEFT, RIGHT, LEFT
 
-Spawn ( :) ) Buzzard:
+Spawn ( :) ) Buzzard Helicopter:
 CIRCLE, CIRCLE, L1, CIRCLE, CIRCLE, CIRCLE, L1, L2, R1, TRIANGLE, CIRCLE, TRIANGLE
 
 Weapons ( :) ):
@@ -85,7 +85,7 @@ GT: R2, L1, CIRCLE, RIGHT, L1, R1, RIGHT, LEFT, CIRCLE, R2
 Spawn Duster:
 RIGHT, LEFT, R1, R1, R1, LEFT, TRIANGLE, TRIANGLE, X, CIRCLE, L1, L1
 
-Spawn PCJ-600:
+Spawn PCJ-600 ( :) ):
 R1, RIGHT, LEFT, RIGHT, R2, LEFT, RIGHT, SQUARE, RIGHT, L2, L1, L1
 
 Spawn BMX:
