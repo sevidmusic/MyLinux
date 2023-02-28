@@ -12,7 +12,7 @@ function updateWal()
     currentWallpaper=$(gsettings get org.gnome.desktop.background picture-uri-dark | sed "s/'//g") &&
     [ -f "$currentWallpaper" ] &&
     wal -c &&
-    wal -q --backend=colorthief -i "$currentWallpaper"
+    wal -q --backend="$(cat ~/.lastColorBackend.txt)" -i "$currentWallpaper"
 }
 
 # Options
@@ -26,8 +26,9 @@ PATH="${PATH}:${HOME}/.local/bin"
 PS1='\[\033[01;0m\]\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;104m\]\[\033[01;32m\] $(date +%Y/%m/%d) $(date +%H:%M:%S) \[\033[01;0m\]\n\n\[\033[01;104m\] $ \[\033[01;0m\] '
 
 # Vars
+alias cdswp="cd /home/darling/.local/share/nvim/swap/"
 alias c='clear'
-alias gfav='gtav "(slow|fast|inv|weap|abi|super)"'
+alias gfav='gtav ":)"'
 alias ls='exa'
 alias more='less -R'
 alias less='less -R'

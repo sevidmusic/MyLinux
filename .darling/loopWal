@@ -35,6 +35,9 @@ do
     # Select a random image from ~/Pictures
     randomImage=$(find ~/Pictures/ -type f | sort -R | tail -1)
 
+    # Save backend to file so last backend used can be determined
+    echo "$colorBackend" > ~/.lastColorBackend.txt
+
     changeColors "$randomImage" "$colorBackend"
     [ "$show" == 'show' ] &&
         clear &&
