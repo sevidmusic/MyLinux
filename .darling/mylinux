@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# This script is replaces the `mylinux` alias that was previously
+# defined in `.darlingrc`
+
+/usr/bin/git --git-dir="${HOME}/.MyLinux" --work-tree="${HOME}" "${@}"
+
