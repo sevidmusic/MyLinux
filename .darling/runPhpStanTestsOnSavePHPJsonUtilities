@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# This script will run `phpstan` tests via `entr` whenever
+# a file in PHPJsonUtilities's src/ or Tests/ directory
+# is modified.
+#
+# Usage:
+#
+# runPHPStanTestsOnSavePHPUnitTestUtilties
+#
+
+msg() {
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+pathToPHPProjects="$HOME/Git"
+pathToPHPJsonUtilities="$pathToPHPProjects/PHPJsonUtilities"
+pathToPHPStan="$pathToPHPJsonUtilities/vendor/bin/phpstan"
+
+cd "$pathToPHPJsonUtilities" || msgAndExit 'PHPJsonUtilities is not installed'
+
+find \
+    "$pathToPHPJsonUtilities/tests" \
+    "$pathToPHPJsonUtilities/src" \
+    -type f -name "*.php" |
+    entr -c "$pathToPHPStan"
+
