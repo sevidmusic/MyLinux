@@ -22,11 +22,8 @@ set -o vi
 PATH="${PATH}:${HOME}/.darling"
 PATH="${PATH}:${HOME}/.local/bin"
 
-ps1MyLinuxStatus="$(mylinux status | grep 'Your branch' | sed 's/Your branch/mylinux/g' | sed 's/\.//g')"
-ps1MylinuxChanges="$(mylinux diff origin/PopOS --stat | tail -1 | awk '{print $1" Ch | "$4" Ins | "$6 " Del "}')"
-ps1Date="$(date +%Y/%m/%d) $(date +%H:%M:%S)"
 # PS#
-PS1="\[\033[01;0m\]\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;104m\]\[\033[01;32m\] ${ps1Date} \[\033[01;0m\]\[\033[01;107m\]\[\033[01;34m\] ${ps1MyLinuxStatus} ${ps1MylinuxChanges} \[\033[01;0m\]\n\n\[\033[01;104m\] $ \[\033[01;0m\] "
+PS1="\[\033[01;0m\]\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;0m\]\n\n\[\033[01;104m\] $ \[\033[01;0m\] "
 
 # Vars
 alias cdswp="cd /home/darling/.local/share/nvim/swap/"
@@ -63,9 +60,9 @@ alias chess='telnet freechess.org'
 [ -z "$TMUX" ] && updateWal;
 
 # show todo list
-echo "Todo: "
-echo
-td list
-echo
-echo "To view todo: td list | To add todo: td add \"todo\" | To remove todo: td done <int>"
-
+# echo "Todo: "
+# echo
+# td list
+# echo
+# echo "To view todo: td list | To add todo: td add \"todo\" | To remove todo: td done <int>"
+#
