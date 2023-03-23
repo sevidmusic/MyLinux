@@ -8,50 +8,52 @@
 " Last Change: 2023/02/21 15:28
 " ===============================================================
 
+let g:colors_name="darling1"
+
+" Tell vim what color groups to use.
 set background=dark
 
+" clear/reset current styles
 hi clear
-
 if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name="darling1"
 
+" Set italic settings
 let Italic = ""
-
 if exists('g:darling1_italic')
   let Italic = "italic"
 endif
-
 let g:darling1_italic = get(g:, 'darling1_italic', 0)
 
-let Bold = ""
 
+" Set bold settings
+let Bold = ""
 if exists('g:darling1_bold')
   let Bold = "bold"
 endif
-
 let g:darling1_bold = get(g:, 'darling1_bold', 0)
 
+
 " Color Column and Cursor Column
-hi ColorColumn ctermfg=NONE ctermbg=8 cterm=NONE
-hi CursorColumn ctermfg=NONE ctermbg=8 cterm=NONE
-hi CursorLine ctermfg=NONE ctermbg=8 cterm=NONE
-hi CursorLineNr ctermfg=81 ctermbg=NONE cterm=NONE
+hi ColorColumn ctermfg=NONE ctermbg=54 cterm=NONE
+hi CursorColumn ctermfg=NONE ctermbg=54 cterm=NONE
+hi CursorLine ctermfg=NONE ctermbg=54 cterm=NONE
+hi CursorLineNr ctermfg=213 ctermbg=NONE cterm=NONE
 
 " Colors for directory listings. This effects the colors of NerdTree.
 hi Directory ctermfg=153 ctermbg=NONE cterm=NONE
 
 " Diff Colors
-" hi DiffAdd ctermfg=NONE ctermbg=238 cterm=NONE
-" hi DiffChange ctermfg=NONE ctermbg=239 cterm=NONE
-" hi DiffDelete ctermfg=203 ctermbg=237 cterm=NONE
+" hi DiffAdd ctermfg=NONE ctermbg=237 cterm=NONE
+" hi DiffChange ctermfg=NONE ctermbg=238 cterm=NONE
+" hi DiffDelete ctermfg=203 ctermbg=239 cterm=NONE
 " hi DiffText ctermfg=NONE ctermbg=NONE gui=reverse cterm=reverse
-" hi diffAdded ctermfg=185 ctermbg=NONE cterm=NONE
-" hi diffChanged ctermfg=153 ctermbg=NONE cterm=NONE
-" hi diffRemoved ctermfg=203 ctermbg=NONE cterm=NONE
-" hi diffSubname ctermfg=142 ctermbg=NONE cterm=NONE
+" hi diffAdded ctermfg=46 ctermbg=NONE cterm=NONE
+" hi diffChanged ctermfg=184 ctermbg=NONE cterm=NONE
+" hi diffRemoved ctermfg=160 ctermbg=NONE cterm=NONE
+" hi diffSubname ctermfg=141 ctermbg=NONE cterm=NONE
 
 " Splits
 " hi VertSplit ctermfg=235 ctermbg=235 cterm=NONE
@@ -62,8 +64,8 @@ hi Directory ctermfg=153 ctermbg=NONE cterm=NONE
 " hi SignColumn ctermfg=246 ctermbg=235 cterm=NONE
 
 " Vim
-" hi vimCommentString ctermfg=58 ctermbg=NONE cterm=NONE
-" hi vimCommentTitle ctermfg=66 ctermbg=NONE cterm=NONE
+" hi vimCommentString ctermfg=137 ctermbg=NONE cterm=NONE
+" hi vimCommentTitle ctermfg=67 ctermbg=NONE cterm=NONE
 
 " Search
 " hi IncSearch ctermfg=15 ctermbg=0 cterm=Bold,reverse
@@ -73,7 +75,7 @@ hi Search ctermfg=157 ctermbg=16 cterm=underline,Bold
 hi MatchParen ctermfg=202 ctermbg=16 cterm=Bold
 
 " Line Numbers
-hi LineNr ctermfg=208 ctermbg=NONE cterm=NONE
+hi LineNr ctermfg=39 ctermbg=NONE cterm=NONE
 
 
 " Status Line
@@ -85,7 +87,7 @@ hi Visual ctermfg=NONE ctermbg=237 cterm=Bold
 hi VisualNOS ctermfg=NONE ctermbg=237 cterm=Bold
 
 " Code
-hi Comment ctermfg=242 ctermbg=NONE cterm=NONE
+hi Comment ctermfg=189 ctermbg=NONE cterm=NONE
 hi Constant ctermfg=215 ctermbg=NONE cterm=NONE
 hi String ctermfg=180 ctermbg=NONE cterm=NONE
 hi Character ctermfg=215 ctermbg=NONE cterm=NONE
@@ -155,10 +157,10 @@ hi helpSectionDelim ctermfg=242 ctermbg=NONE cterm=NONE
 hi helpNote ctermfg=203 ctermbg=NONE cterm=NONE
 
 " Spell Check
-hi SpellBad ctermfg=203 ctermbg=NONE cterm=Bold,underline
-hi SpellLocal ctermfg=180 ctermbg=NONE cterm=NONE
+hi SpellBad ctermfg=197 ctermbg=NONE cterm=Bold,underline
+hi SpellLocal ctermfg=209 ctermbg=NONE cterm=NONE
 hi SpellCap ctermfg=215 ctermbg=NONE cterm=NONE
-hi SpellRare ctermfg=81 ctermbg=NONE cterm=NONE
+hi SpellRare ctermfg=99 ctermbg=NONE cterm=NONE
 
 " Text
 hi NonText ctermfg=238 ctermbg=NONE cterm=NONE
@@ -170,11 +172,11 @@ hi Underlined ctermfg=NONE ctermbg=NONE gui=underline cterm=underline
 hi Normal ctermfg=255 ctermbg=0 cterm=NONE
 
 " Errors and Warnings
-hi WarningMsg ctermfg=203 ctermbg=NONE cterm=NONE
-hi ErrorMsg ctermfg=203 ctermbg=NONE gui=reverse cterm=reverse
-hi vimError ctermfg=255 ctermbg=203 cterm=NONE
-hi Error ctermfg=255 ctermbg=203 cterm=NONE
-hi markdownError ctermfg=203 ctermbg=NONE cterm=NONE
+hi WarningMsg ctermfg=226 ctermbg=NONE cterm=NONE
+hi ErrorMsg ctermfg=197 ctermbg=NONE gui=reverse cterm=reverse
+hi vimError ctermfg=197 ctermbg=203 cterm=NONE
+hi Error ctermfg=197 ctermbg=203 cterm=NONE
+hi markdownError ctermfg=197 ctermbg=NONE cterm=NONE
 
 " Menus
 " hi WildMenu ctermfg=235 ctermbg=185 cterm=Bold
@@ -306,3 +308,4 @@ hi typescriptTernaryOp ctermfg=203 ctermbg=NONE cterm=NONE
 hi typescriptTypeAnnotation ctermfg=203 ctermbg=NONE cterm=NONE
 hi typescriptUnaryOp ctermfg=203 ctermbg=NONE cterm=NONE
 hi typescriptVariable ctermfg=81 ctermbg=NONE cterm=NONE
+
