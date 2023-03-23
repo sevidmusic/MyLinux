@@ -26,10 +26,12 @@ PATH="${PATH}:${HOME}/.local/bin"
 PS1="\[\033[01;0m\]\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;0m\]\n\n\[\033[01;104m\] $ \[\033[01;0m\] "
 
 # Vars
+alias map="mapscii"
+alias tmap="telnet mapscii.me"
 alias cdswp="cd /home/darling/.local/share/nvim/swap/"
 alias c='clear'
 alias gfav='gtav ":)"'
-alias ls='exa'
+alias ls='exa -laF'
 alias more='less -R'
 alias less='less -R'
 alias q='exit'
@@ -42,7 +44,6 @@ alias gst='git status'
 alias gdf='git diff'
 alias gds='git diff --stat'
 alias gpu='printf "\n\e[0m\e[105m\e[30mAre you sure that you want to push your changes to github? (y|n)\e[0m\n"; read c; [ "${c}" == "y" ] && git push -u'
-alias sshDarlingDev='ssh darling@104.237.146.46'
 alias gs='echo "gs is disabled via an alias defined in ~/.darlingrc"'
 alias cmx='cmatrix -su 11'
 alias cat='bat --style plain'
@@ -54,6 +55,8 @@ alias rbytes='head -c 5M /dev/urandom | sha1sum | sed "s/-//g" | sed "s/ //g"'
 alias myip='ifconfig wlo1 | grep "inet "'
 alias smon='sudo tcpdump -i'
 alias chess='telnet freechess.org'
+alias sshDarlingArchRoot='ssh root@45.79.172.110'
+alias sshDarlingArchDarling='ssh darling@45.79.172.110'
 
 # Make sure colors match background image
 
