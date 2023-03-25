@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# This script will run `phpunit` tests via `entr` whenever
+# a file in either PHPMockingUtilities's src/ or tests/
+# directoy is modified.
+#
+# Usage:
+#
+# runPHPUnitTestsOnSavePHPMockingUtilities
+#
+
+msg() {
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+pathToPhpProjects="$HOME/Git"
+pathToPHPMockingUtilities="$pathToPhpProjects/PHPMockingUtilities"
+pathToPhpUnit="$pathToPHPMockingUtilities/vendor/bin/phpunit"
+
+cd "$pathToPHPMockingUtilities" || msgAndExit 'PHPMockingUtilities is not installed'
+
+find \
+    "$pathToPHPMockingUtilities/tests" \
+    "$pathToPHPMockingUtilities/src" \
+    -type f -name "*.php" |
+    entr -c "$pathToPhpUnit" -c "$pathToPHPMockingUtilities/php.xml"
+
