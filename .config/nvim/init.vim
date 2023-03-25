@@ -1,5 +1,8 @@
 " Settings
 
+" Colorscheme
+colorscheme darling1
+
 " Prevent vim from asking if you want to save everytime you leave
 " a modified buffer.
 set hidden
@@ -257,34 +260,4 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 " Setting that must be set after plugins
 
 " Plugin Settings
-colorscheme darling1
 
-" Functions
-
-let g:cschemes = ['darling1', 'tender', 'afterglow', 'focuspoint', 'iceberg', 'termschool', 'twilight256']
-
-""""""" Cycle Through Favorite Color Schemes """""""
-function! CycleColorSchemesForward()
-  let current_scheme = g:colors_name
-  " Uncomment to use all installed color schemes: let schemes = ['256_noir', 'OceanicNext', 'OceanicNextLight', 'PaperColor', 'abstract', 'afterglow', 'alduin', 'anderson', 'angr', 'apprentice', 'archery', 'atom', 'ayu', 'carbonized-dark', 'carbonized-light', 'challenger_deep', 'deep-space', 'deus', 'dogrun', 'fahrenheit', 'flattened_dark', 'flattened_light', 'focuspoint', 'fogbell', 'fogbell_light', 'fogbell_lite', 'github', 'gotham', 'gotham256', 'gruvbox', 'happy_hacking', 'hybrid', 'hybrid_material', 'hybrid_reverse', 'iceberg', 'jellybeans', 'lightning', 'lucid', 'lucius', 'materialbox', 'meta5', 'minimalist', 'molokai', 'molokayo', 'mountaineer', 'mountaineer-grey', 'mountaineer-light', 'nord', 'oceanic_material', 'one', 'one-dark', 'onedark', 'onehalfdark', 'onehalflight', 'orange-moon', 'orbital', 'paramount', 'parsec', 'pink-moon', 'purify', 'pyte', 'rakr', 'rdark-terminal2', 'scheakur', 'seoul256', 'seoul256-light', 'sierra', 'snow', 'solarized8', 'solarized8_flat', 'solarized8_high', 'solarized8_low', 'sonokai', 'space-vim-dark', 'spacecamp', 'spacecamp_lite', 'stellarized', 'sunbather', 'tender', 'termschool', 'twilight256', 'two-firewatch', 'wombat256mod', 'yellow-moon']
-  let schemes = g:cschemes
-  let index = index(schemes, current_scheme)
-  let next_scheme = schemes[(index + 1) % len(schemes)]
-  execute "colorscheme " . next_scheme
-  echo next_scheme
-endfunction
-
-function! CycleColorSchemesBackward()
-  let current_scheme = g:colors_name
-  let schemes = g:cschemes
-  let index = index(schemes, current_scheme)
-  let next_scheme = schemes[(index - 1) % len(schemes)]
-  execute "colorscheme " . next_scheme
-  echo next_scheme
-endfunction
-
-" Set keybindings for function calls
-nnoremap <F5> :call CycleColorSchemesBackward()<cr>
-nnoremap <F6> :call CycleColorSchemesForward()<cr>
-
-""""""" End Cycle Through Favorite Color Schemes """""""
