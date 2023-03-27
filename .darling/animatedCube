@@ -1,0 +1,108 @@
+#!/bin/bash
+
+# set initial variables
+WIDTH=$(tput cols)
+HEIGHT=$(tput lines)
+SQUARE_WIDTH=5
+SQUARE_HEIGHT=3
+SQUARE_X=0
+SQUARE_Y=$((HEIGHT/2 - SQUARE_HEIGHT/2))
+SPEED=0.03
+
+# set colors for each edge of the square
+TOP_COLOR='\e[31m'
+BOTTOM_COLOR='\e[32m'
+LEFT_COLOR='\e[33m'
+RIGHT_COLOR='\e[34m'
+RESET_COLOR='\e[0m'
+
+# function to draw the square at the current position with colored edges
+function draw_square() {
+  tput cup $SQUARE_Y $SQUARE_X
+  printf "${TOP_COLOR}%*s${RESET_COLOR}" $SQUARE_WIDTH ''
+  tput cup $((SQUARE_Y + 1)) $SQUARE_X
+  printf "${LEFT_COLOR}%1s${RESET_COLOR}%*s${RIGHT_COLOR}%1s${RESET_COLOR}" \
+         '#' $((SQUARE_WIDTH - 2)) '#'
+  tput cup $((SQUARE_Y + 2)) $SQUARE_X
+  printf "${BOTTOM_COLOR}%*s${RESET_COLOR}" $SQUARE_WIDTH ''
+}
+
+# function to move the square left if possible
+function move_left() {
+  if [ $SQUARE_X -gt 0 ]
+  then
+    SQUARE_X=$((SQUARE_X - 1))
+  fi
+}
+
+# function to move the square right if possible
+function move_right() {
+  if [ $SQUARE_X -lt $((WIDTH - SQUARE_WIDTH)) ]
+  then
+    SQUARE_X=$((SQUARE_X + 1))
+  fi
+}
+
+# function to move the square up if possible
+function move_up() {
+  if [ $SQUARE_Y -gt 0 ]
+  then
+    SQUARE_Y=$((SQUARE_Y - 1))
+  fi
+}
+
+# function to move the square down if possible
+function move_down() {
+  if [ $SQUARE_Y -lt $((HEIGHT - SQUARE_HEIGHT)) ]
+  then
+    SQUARE_Y=$((SQUARE_Y + 1))
+  fi
+}
+
+# function to clear the square from the screen
+function clear_square() {
+  tput cup $SQUARE_Y $SQUARE_X
+  printf '%*s' $SQUARE_WIDTH ''
+  tput cup $((SQUARE_Y + 1)) $SQUARE_X
+  printf '%*s' $SQUARE_WIDTH ''
+  tput cup $((SQUARE_Y + 2)) $SQUARE_X
+  printf '%*s' $SQUARE_WIDTH ''
+}
+
+# clear screen
+clear
+
+# loop until the user quits
+while true
+do
+  # draw the square at the current position with colored edges
+  draw_square
+
+  # read user input to move the square
+  read -s -n 1 -r KEY
+  case $KEY in
+    h) # move left
+      move_left
+      ;;
+    l) # move right
+      move_right
+      ;;
+    k) # move up
+      move_up
+      ;;
+    j) # move down
+      move_down
+      ;;
+    q) # quit
+      break
+      ;;
+  esac
+
+  # clear the screen and pause for a short time to create animation effect
+  clear
+  sleep $SPEED
+done
+
+# clear the square from the screen
+clear_square
+
