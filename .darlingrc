@@ -42,7 +42,7 @@ git_status() {
   fi
 }
 
-PS1='\[\e[1;36m\]\d \[\e[1;33m\]\t \[\e[34;94m\]\u@\h:\[\e[1;0m\] \[\e[34;97m\]\w\[\e[34;93m\] [\!] $(git_branch)$(git_status)\[\e[1;33m\]\n $ '
+PS1='\[\e[1;0m\]\[\e[1;36m\]\d \[\e[1;33m\]\t \[\e[34;94m\]\u@\h:\[\e[1;0m\] \[\e[34;97m\]\w\[\e[34;93m\] [\!] $(git_branch)$(git_status)\[\e[1;33m\]\n $ \[\e[34;35m\]'
 
 # Vars
 alias map="mapscii"
