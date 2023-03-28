@@ -22,8 +22,27 @@ set -o vi
 PATH="${PATH}:${HOME}/.darling"
 PATH="${PATH}:${HOME}/.local/bin"
 
-# PS#
-PS1="\[\033[01;0m\]\[\033[01;105m\]\[\033[01;30m\] \u \[\033[01;102m\] \w \[\033[01;0m\]\n\n\[\033[01;104m\] $ \[\033[01;0m\] "
+# PS1 #
+git_branch() {
+  if [ -d .git ]; then
+    branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [ $? -eq 0 ]; then
+      echo -e "\033[0m\033[34;97m($branch)\033[0m"
+    fi
+  fi
+}
+
+git_status() {
+  if [ -d .git ]; then
+    if git rev-parse --git-dir >/dev/null 2>&1; then
+      if [ -n "$(git status --porcelain)" ]; then
+        echo -e "\033[1;33m (changes have not been commited) \033[0m"
+      fi
+    fi
+  fi
+}
+
+PS1='\[\e[1;36m\]\d \[\e[1;33m\]\t \[\e[34;94m\]\u@\h:\[\e[1;0m\] \[\e[34;97m\]\w\[\e[34;93m\] [\!] $(git_branch)$(git_status)\[\e[1;33m\]\n $ '
 
 # Vars
 alias map="mapscii"
