@@ -3,5 +3,17 @@
 # This script is replaces the `mylinux` alias that was previously
 # defined in `.darlingrc`
 
+msg() {
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+# Dissallow use of `mylinux add .`
+[ "${2}" = '.' ] && msg "You cannot add all files to mylinux." && mylinux status && msgAndExit "Please be specific about the files you wish to add"
+
 /usr/bin/git --git-dir="${HOME}/.MyLinux" --work-tree="${HOME}" "${@}"
 
