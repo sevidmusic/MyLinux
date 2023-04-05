@@ -213,6 +213,25 @@ endif
 
 call plug#begin()
 
+" ~~~ LSP Servers and related ~~~
+
+"Plug 'neovim/nvim-lspconfig'
+
+Plug 'phpactor/phpactor', {'for': 'php', 'do': 'composer install'}
+
+" assuming you're using vim-plug: https://github.com/junegunn/vim-plug
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+
+Plug 'phpactor/ncm2-phpactor'
+
+" ~~~ End LSP Stuff ~~~
+
 " Third party color schemes
 Plug 'fcpg/vim-fahrenheit'
 
@@ -240,6 +259,25 @@ Plug 'rafi/awesome-vim-colorschemes'
 call plug#end()
 
 " Plugin Mappings
+
+" LSP Stuff | phpactor | ncm2
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" END LSP STUFF
+
 " Toggle NerdTree
 nnoremap <leader>a :NERDTreeToggle<cr>
 
