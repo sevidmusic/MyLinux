@@ -38,6 +38,17 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Normal Mode Mappings
 
+" Go to marker n and center
+nnoremap <leader>l1 `1zz<esc>
+nnoremap <leader>l2 `2zz<esc>
+nnoremap <leader>l3 `3zz<esc>
+nnoremap <leader>l4 `4zz<esc>
+nnoremap <leader>l5 `5zz<esc>
+nnoremap <leader>l6 `6zz<esc>
+nnoremap <leader>l7 `7zz<esc>
+nnoremap <leader>l8 `8zz<esc>
+nnoremap <leader>l9 `9zz<esc>
+
 " Enable/disable cursorline and cursorcolumn
 :nnoremap <leader>c :set cursorline! cursorcolumn!<cr>
 
