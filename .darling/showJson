@@ -9,8 +9,7 @@
 
 readJson() {
     cat "$1" |
-    json_pp -f json -t dumper -json_opt pretty,utf8,allow_bignum |
-    bat
+    json_pp -f json -t dumper -json_opt pretty,utf8,allow_bignum
 }
 
 [ -n "$1" ] && readJson "$1"

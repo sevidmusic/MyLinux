@@ -1,7 +1,7 @@
 " Settings
 
 " Colorscheme
-colorscheme darling1
+colorscheme darling3
 
 " Prevent vim from asking if you want to save everytime you leave
 " a modified buffer.
