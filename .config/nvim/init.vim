@@ -76,6 +76,12 @@ nnoremap <leader>npm 0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi
 " new private class method
 nnoremap <leader>nsm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
 
+" new foreach loop
+nnoremap <leader>nfe 0oforeach($array as $key => $value) {<esc>o}<esc>O
+
+" new if statement
+nnoremap <leader>nif 0oif() {<esc>o}<esc>kela
+
 " new php doc comment
 nnoremap <leader>dcm o/**<esc>o<esc>o/<esc>khxxxa
 
