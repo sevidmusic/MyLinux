@@ -22,6 +22,11 @@ set -o vi
 PATH="${PATH}:${HOME}/.darling"
 PATH="${PATH}:${HOME}/.local/bin"
 
+gddf() {
+    BRANCH="$(git branch | grep '\*' | sed 's/\*//g' | sed 's/ //g')";
+    git diff origin/"${BRANCH}";
+}
+
 # PS1 #
 
 mylinux_branch() {
@@ -87,7 +92,6 @@ alias tna='tmux attach -t'
 alias tns='tmux new -s'
 alias voa='xargs --delimiter "\\n" --arg-file="${HOME}/vimfilelist" nvim --'
 alias gst='git status'
-alias gdf='git diff'
 alias gds='git diff --stat'
 alias gpu='printf "\n\e[0m\e[105m\e[30mAre you sure that you want to push your changes to github? (y|n)\e[0m\n"; read c; [ "${c}" == "y" ] && git push -u'
 alias gs='echo "gs is disabled via an alias defined in ~/.darlingrc"'
