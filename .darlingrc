@@ -67,6 +67,10 @@ git_status() {
   fi
 }
 
+sizeOfHome() {
+  du -sh ~/ | awk '{print $1;}'
+}
+
 
 # Previous: PS1='\n\[\e[1;0m\] $(mylinux_branch)$(mylinux_status) $(git_branch)$(git_status)\[\e[33;96m\]\d\[\e[33;0m\] \[\e[1;33m\]\t \[\e[34;92m\] [\!] \[\e[34;35m\]\w \n\n  \[\e[34;94m\]$\[\e[1;0m\] \[\e[34;96m\]'
 PS1='\n\[\e[1;0m\] $(mylinux_branch)$(mylinux_status) $(git_branch)$(git_status)\[\e[33;96m\]\d\[\e[33;0m\] \[\e[1;33m\]\t \[\e[34;92m\] [\!] \n\n\[\e[34;35m\]   \w \n\n  \[\e[34;94m\]$\[\e[1;0m\] \[\e[34;96m\]'
