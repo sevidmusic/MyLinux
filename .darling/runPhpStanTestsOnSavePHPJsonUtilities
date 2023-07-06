@@ -27,6 +27,7 @@ cd "$pathToPHPJsonUtilities" || msgAndExit 'PHPJsonUtilities is not installed'
 find \
     "$pathToPHPJsonUtilities/tests" \
     "$pathToPHPJsonUtilities/src" \
+    "$pathToPHPJsonUtilities/examples" \
     -type f -name "*.php" |
     entr -c "$pathToPHPStan"
 
