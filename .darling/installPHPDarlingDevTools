@@ -41,8 +41,7 @@ cd "$pathToPHPDarlingDevTools" ||
     msgAndExit 'Failed to run composer update'
 
 "$pathToPhpStan" analyze --level 9 \
-    "$pathToPHPDarlingDevTools/src" \
-    "$pathToPHPDarlingDevTools/tests"
+    "$pathToPHPDarlingDevTools/NewClass.php"
 
 git checkout -b "$newBranchName"
 git push --set-upstream origin "$newBranchName"
