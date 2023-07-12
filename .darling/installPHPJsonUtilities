@@ -47,6 +47,10 @@ cd "$pathToPHPJsonUtilities" ||
     "$pathToPHPJsonUtilities/src" \
     "$pathToPHPJsonUtilities/tests"
 
+"$pathToPHPJsonUtilities/runIntegrationTests.sh"
+
+printf '%b' "\e[0m\n"
+
 git checkout -b "$newBranchName"
 git push --set-upstream origin "$newBranchName"
 
