@@ -79,6 +79,9 @@ nnoremap <leader>nsm 0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi
 " new foreach loop
 nnoremap <leader>nfe 0oforeach($array as $key => $value) {<esc>o}<esc>O
 
+" new for loop
+nnoremap <leader>nfo 0ofor($i = 0; $i < 10; $i++) {<esc>o}<esc>O
+
 " new if statement
 nnoremap <leader>nif 0oif() {<esc>o}<esc>kela
 
@@ -86,7 +89,7 @@ nnoremap <leader>nif 0oif() {<esc>o}<esc>kela
 nnoremap <leader>dcm o/**<esc>o<esc>o/<esc>khxxxa
 
 " new php method/function doc comment
-nnoremap <leader>mcm o/**<esc>o<esc>o/<esc>khxxxa [Description]<esc>o<esc>o@return<esc>o<esc>o@example<esc>o<esc>o```<esc><esc>o<esc>o```<esc>o<esc>
+nnoremap <leader>mcm o/**<esc>o<esc>o/<esc>khxxxa [Description]<esc>o<esc>o@return<esc>o<esc>o@example<esc>o<esc>o```<esc><esc>o<esc>o```<esc>o<esc>9kd$a
 
 " edit $MYVIMRC
 nnoremap <leader>ev :tabe $MYVIMRC<cr>
