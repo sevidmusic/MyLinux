@@ -103,6 +103,11 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " the line the cursor is currently on.
 nnoremap <leader>iso :read !
 
+" Copy current file to clip board (requires xclip)
+
+" Copy contents of current file to clipboard bia xclip
+nnoremap <leader>cp :!xclip -sel clip %<esc>
+
 " List buffers
 nnoremap <leader>lb :ls<cr>
 
@@ -190,7 +195,7 @@ nnoremap <leader>pb :bprevious<cr>
 nnoremap <leader>sb :buffer<space>
 
 " Enter :colorscheme prompt
-nnoremap <leader>cc :colorscheme
+" nnoremap <leader>cc :colorscheme
 
 " Begin a search for a function
 nnoremap <leader>ff /function.*
@@ -318,4 +323,33 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 " Setting that must be set after plugins
 
 " Plugin Settings
+
+
+" Experimental
+" Function to cycle through installed color schemes
+function! CycleColorSchemes()
+    let current_scheme = g:colors_name
+    let next_scheme = ''
+    for s in split(globpath(&rtp, 'colors/*.vim'), '\n')
+        let basename = fnamemodify(s, ':t:r')
+        if basename ==# current_scheme
+            let next_scheme = fnamemodify(s, ':t:r')
+            let next_scheme_idx = index(split(globpath(&rtp, 'colors/*.vim'), '\n'), s) + 1
+            if next_scheme_idx >= len(split(globpath(&rtp, 'colors/*.vim'), '\n'))
+                let next_scheme_idx = 0
+            endif
+            let next_scheme = fnamemodify(split(globpath(&rtp, 'colors/*.vim'), '\n')[next_scheme_idx], ':t:r')
+            break
+        endif
+    endfor
+
+    if next_scheme != ''
+        execute 'colorscheme ' . next_scheme
+        echo 'Switched to ' . next_scheme . ' colorscheme'
+    else
+        echo 'No other color schemes found'
+    endif
+endfunction
+" Mapping to trigger the color scheme switch
+nnoremap <leader>cc :call CycleColorSchemes()<CR>
 
