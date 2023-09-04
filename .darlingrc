@@ -96,7 +96,7 @@ alias r="history -c && reset"
 alias tls='tmux ls'
 alias tna='tmux attach -t'
 alias tns='tmux new -s'
-alias voa='xargs --delimiter "\\n" --arg-file="${HOME}/vimfilelist" nvim --'
+alias voa='xargs --delimiter "\\n" --arg-file="./vimfilelist" nvim --'
 alias gst='git status'
 alias gdf='git diff'
 alias gds='git diff --stat'
