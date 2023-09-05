@@ -1,4 +1,7 @@
---next Darling settings | Setting must be defined before return {}
+--next Darling settings | Settings must be defined before return {}
+
+-- Prefered Coloscheme
+vim.cmd.colorscheme 'habamax'
 
 -- Add a color column at line 70
 vim.opt.cursorcolumn = true;
@@ -15,19 +18,19 @@ vim.opt.relativenumber = true;
 -- Tabs to spaces
 vim.opt.expandtab = true
 
--- Tabstop 
+-- Tabstop
 vim.opt.tabstop = 8
 
--- Tabstop 
+-- Tabstop
 vim.opt.softtabstop = 0
 
--- Expand tab 
+-- Expand tab
 vim.opt.expandtab = true
 
--- Shift width 
+-- Shift width
 vim.opt.shiftwidth = 4
 
--- Smart tab 
+-- Smart tab
 vim.opt.smarttab = true
 
 -- Don't wrap long lines
@@ -36,14 +39,14 @@ vim.opt.wrap = false
 -- Turn on spellcheck
 vim.opt.spell = true
 
--- Darling Keybindings 
+-- Darling Keybindings
 -- TestKeyBinding: vim.keymap.set('n', '<leader>z', ':echo "test"');
 -- KeyBindingTemplate: vim.keymap.set('n', '<leader>z', ':echo "test"')
 
--- Go to next buffer 
+-- Go to next buffer
 vim.keymap.set('n', '<leader>nb', ':bnext<cr>')
 
--- Go to previous buffer 
+-- Go to previous buffer
 vim.keymap.set('n', '<leader>pb', ':bprev<cr>')
 
 -- Write current file
@@ -60,6 +63,12 @@ vim.keymap.set('n', '<leader>wq', ':wq<cr>')
 
 -- Write all files and quit
 vim.keymap.set('n', '<leader>wqa', ':wqa<cr>')
+
+-- Darling Auto-commands :
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
 
 -- return {} is required even if it is empty.
 return {
