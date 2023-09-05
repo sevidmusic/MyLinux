@@ -55,6 +55,13 @@ vim.keymap.set('n', '<leader>W', ':w<cr>:set undoreload=0<cr>:edit<cr>')
 -- Write current file and clear undo history
 vim.keymap.set('n', '<leader>cp', ':!xclip -sel clip %<esc>')
 
+-- Write current file and quit
+vim.keymap.set('n', '<leader>wq', ':wq<cr>')
+
+-- Write all files and quit
+vim.keymap.set('n', '<leader>wqa', ':wqa<cr>')
+
 -- return {} is required even if it is empty.
 return {
+    'phpactor/phpactor',
 }
