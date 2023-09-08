@@ -1,7 +1,8 @@
 --next Darling settings | Settings must be defined before return {}
 
 -- Prefered Coloscheme
-vim.cmd.colorscheme 'habamax'
+-- vim.cmd.colorscheme 'habamax'
+vim.cmd.colorscheme 'ron'
 
 -- Add a color column at line 70
 vim.opt.cursorcolumn = true;
@@ -63,6 +64,9 @@ vim.keymap.set('n', '<leader>wq', ':wq<cr>')
 
 -- Write all files and quit
 vim.keymap.set('n', '<leader>wqa', ':wqa<cr>')
+
+-- Show methods defined in the current file
+vim.keymap.set('n', '<leader>sm', ':!showMethods %<cr>')
 
 -- Darling Auto-commands :
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
