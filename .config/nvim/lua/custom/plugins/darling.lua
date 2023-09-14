@@ -1,8 +1,8 @@
 --next Darling settings | Settings must be defined before return {}
 
 -- Prefered Coloscheme
--- vim.cmd.colorscheme 'habamax'
-vim.cmd.colorscheme 'ron'
+vim.cmd.colorscheme 'habamax'
+-- vim.cmd.colorscheme 'ron'
 
 -- Add a color column at line 70
 vim.opt.cursorcolumn = true;
@@ -53,6 +53,9 @@ vim.keymap.set('n', '<leader>pb', ':bprev<cr>')
 -- Write current file
 vim.keymap.set('n', '<leader>w', ':w<cr>')
 
+-- Close all and quit without saving as long as there aren't any changes
+vim.keymap.set('n', '<leader>qa', ':qa<cr>')
+
 -- Write current file and clear undo history
 vim.keymap.set('n', '<leader>W', ':w<cr>:set undoreload=0<cr>:edit<cr>')
 
@@ -67,6 +70,36 @@ vim.keymap.set('n', '<leader>wqa', ':wqa<cr>')
 
 -- Show methods defined in the current file
 vim.keymap.set('n', '<leader>sm', ':!showMethods %<cr>')
+
+-- Find function/method
+vim.keymap.set('n', '<leader>ff', '$/function.*')
+
+-- New private method
+vim.keymap.set('n', '<leader>nsm', '0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi')
+
+-- New protected method
+vim.keymap.set('n', '<leader>nsm', '0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi')
+
+-- New public method
+vim.keymap.set('n', '<leader>npm', '0opublic function (): void<esc>o{<esc>o}<esc>kk0wwwi')
+
+-- New public method
+vim.keymap.set('n', '<leader>ncm', '0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi')
+
+-- Find word under cursor
+vim.keymap.set('n', '<leader>fw', 'lbvey/<c-r>0<cr>')
+
+-- Enter command mode, and begin a call to read !, the
+-- output of whatever command is then entered will be
+-- inserted into the current file on the line below
+-- the line the cursor is currently on.
+vim.keymap.set('n', '<leader>iso', ':read !')
+
+-- Edit init.lua
+vim.keymap.set('n', '<leader>elc', ':tabe $MYVIMRC<cr>')
+
+-- Edit darling.lua
+vim.keymap.set('n', '<leader>edc', ':tabe ~/.config/nvim/lua/custom/plugins/darling.lua<cr>')
 
 -- Darling Auto-commands :
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
