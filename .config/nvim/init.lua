@@ -93,6 +93,10 @@ require('lazy').setup({
     },
   },
 
+-- php stuff
+  'stephpy/vim-php-cs-fixer',
+  'ncm2/ncm2',
+  'phpactor/ncm2-phpactor',
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -132,12 +136,11 @@ require('lazy').setup({
   },
 
   {
---    -- Theme inspired by Atom
---    'navarasu/onedark.nvim',
---    priority = 1000,
---    config = function()
---      vim.cmd.colorscheme 'onedark'
---    end,
+    -- 'navarasu/onedark.nvim',
+    -- priority = 1000,
+    -- config = function()
+    --   vim.cmd.colorscheme 'onedark'
+    -- end,
   },
 
   {
@@ -146,9 +149,9 @@ require('lazy').setup({
     -- See `:help lualine.txt`
     opts = {
       options = {
-        icons_enabled = false,
+        icons_enabled = true,
         theme = 'onedark',
-        component_separators = '|',
+        component_separators = '-',
         section_separators = '',
       },
     },
