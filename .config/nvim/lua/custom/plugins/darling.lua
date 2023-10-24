@@ -1,41 +1,48 @@
---next Darling settings | Settings must be defined before return {}
+---------------------------------------------------------------------
+-------------------------- Darling Settings -------------------------
+---------------------------------------------------------------------
+
+-- IMPORTANT: Settings must be defined before return {} block
 
 -- Prefered Coloscheme
--- vim.cmd.colorscheme 'darkblue'
 vim.cmd.colorscheme 'lunaperche'
--- vim.cmd.colorscheme 'ron'
 
--- Add a color column at line 70
+-- Enable vim's built in syntax highlighting
 vim.opt.syntax = "on";
 
--- Add a color column at line 70
+-- Enable a cursor column
 vim.opt.cursorcolumn = true;
 
--- Add a color column at line 70
+-- Enable cursor line
 vim.opt.cursorline = true;
 
--- Add a color column at line 70
+-- Highlight column 70 as a visual aide
 vim.opt.colorcolumn = '70';
 
--- Relative line numbers
+-- Enable relative line numbers
 vim.opt.relativenumber = true;
 
--- Tabs to spaces
+-- Convert tabs to spaces
 vim.opt.expandtab = true
 
--- Tabstop
+-- Set tabstop to 8, as is recommended by the docs
+-- "Note: Setting 'tabstop' to any other value than 8 can make your
+--  file appear wrong in many places."
 vim.opt.tabstop = 8
 
--- Tabstop
+-- Disable softtabstop
 vim.opt.softtabstop = 0
 
--- Expand tab
+-- Enable expandtab
 vim.opt.expandtab = true
 
--- Shift width
+-- Set shiftwidth to 4 which will determine the Number of spaces to
+-- use for each step of (auto)indent.
+-- Used for |'cindent'|, |>>|, |<<|, etc.
 vim.opt.shiftwidth = 4
 
--- Smart tab
+-- Enable smart tab to so that a <Tab> in front of a line inserts
+-- blanks according to the 'shiftwidth' value.
 vim.opt.smarttab = true
 
 -- Don't wrap long lines
@@ -44,9 +51,88 @@ vim.opt.wrap = false
 -- Turn on spellcheck
 vim.opt.spell = true
 
--- Darling Keybindings
--- TestKeyBinding: vim.keymap.set('n', '<leader>z', ':echo "test"');
--- KeyBindingTemplate: vim.keymap.set('n', '<leader>z', ':echo "test"')
+---------------------------------------------------------------------
+------------------------- Darling Functions -------------------------
+---------------------------------------------------------------------
+
+function list_color_schemes()
+    local colorscheme_dir = '/home/darling/manuallyInstalledBinaries/nvim-linux64/share/nvim/runtime/colors/'
+
+    local color_schemes = {}
+
+    for _, filename in ipairs(vim.fn.readdir(colorscheme_dir)) do
+        if vim.fn.isdirectory(colorscheme_dir .. filename) == 0 then
+            table.insert(color_schemes, filename)
+        end
+    end
+
+    return color_schemes
+end
+
+function reverse_list_color_schemes()
+    local colorscheme_dir = '/home/darling/manuallyInstalledBinaries/nvim-linux64/share/nvim/runtime/colors/'
+
+    local color_schemes = {}
+
+    for _, filename in ipairs(vim.fn.readdir(colorscheme_dir)) do
+        if vim.fn.isdirectory(colorscheme_dir .. filename) == 0 then
+            table.insert(color_schemes, filename)
+        end
+    end
+
+    -- Reverse the color schemes table
+    local reversed_color_schemes = {}
+    for i = #color_schemes, 1, -1 do
+        table.insert(reversed_color_schemes, color_schemes[i])
+    end
+
+    return reversed_color_schemes
+end
+
+function cycle_color_schemes()
+    local current_scheme = vim.fn.execute('colorscheme'):gsub("\n", "")
+    local available_schemes = list_color_schemes()
+    local next_scheme
+
+    for i, scheme in ipairs(available_schemes) do
+        local scheme_name = scheme:gsub("%.vim$", "")
+        if scheme_name == current_scheme then
+            next_scheme = available_schemes[(i % #available_schemes) + 1]:gsub("%.vim$", "")
+            break
+        end
+    end
+
+    if next_scheme and next_scheme ~= 'README.txt' then
+        vim.cmd('colorscheme ' .. next_scheme)
+        print('Switched to ' .. next_scheme .. ' color scheme')
+    else
+        print('Last available scheme selected, use <leader>rcc to go back: ' .. current_scheme)
+    end
+end
+
+function reverse_cycle_color_schemes()
+    local current_scheme = vim.fn.execute('colorscheme'):gsub("\n", "")
+    local available_schemes = reverse_list_color_schemes()
+    local next_scheme
+
+    for i, scheme in ipairs(available_schemes) do
+        local scheme_name = scheme:gsub("%.vim$", "")
+        if scheme_name == current_scheme then
+            next_scheme = available_schemes[(i % #available_schemes) + 1]:gsub("%.vim$", "")
+            break
+        end
+    end
+
+    if next_scheme and next_scheme ~= 'README.txt' then
+        vim.cmd('colorscheme ' .. next_scheme)
+        print('Switched to ' .. next_scheme .. ' color scheme')
+    else
+        print('First available scheme selected, use <leader>cc to go forward: ' .. current_scheme)
+    end
+end
+---------------------------------------------------------------------
+------------------------ Darling Keybindings ------------------------
+---------------------------------------------------------------------
 
 -- Go to next buffer
 vim.keymap.set('n', '<leader>nb', ':bnext<cr>')
@@ -102,49 +188,11 @@ vim.keymap.set('n', '<leader>fw', 'lbvey/<c-r>0<cr>')
 -- Find word under cursor
 vim.keymap.set('n', '<leader>l', '`1zt')
 
--- change color scheme
--- vim.keymap.set('n', '<leader>cc', ':colorscheme ')
-
-function list_color_schemes()
-    local vim_dir = vim.fn.stdpath('data')
-    local colorscheme_dir = '/home/darling/manuallyInstalledBinaries/nvim-linux64/share/nvim/runtime/colors/'
-
-    local color_schemes = {}
-
-    for _, filename in ipairs(vim.fn.readdir(colorscheme_dir)) do
-        if vim.fn.isdirectory(colorscheme_dir .. filename) == 0 then
-            table.insert(color_schemes, filename)
-        end
-    end
-
-    return color_schemes
-end
-
-function cycle_color_schemes()
-    local current_scheme = vim.fn.execute('colorscheme'):gsub("\n", "")
-    local available_schemes = list_color_schemes()
-    local next_scheme
-
-    for i, scheme in ipairs(available_schemes) do
-    print(available_schemes[(i % #available_schemes) + 1])
-        local scheme_name = scheme:gsub("%.vim$", "")
-        if scheme_name == current_scheme then
-            next_scheme = available_schemes[(i % #available_schemes) + 1]:gsub("%.vim$", "")
-            break
-        end
-    end
-
-    if next_scheme then
-        vim.cmd('colorscheme ' .. next_scheme)
-        print('Switched to ' .. next_scheme .. ' color scheme')
-    else
-        print('Color scheme not found: ' .. current_scheme)
-    end
-end
-
 -- Cycle through color schemes
 vim.api.nvim_set_keymap('n', '<leader>cc', [[:lua cycle_color_schemes()<CR>]], { noremap = true, silent = true })
 
+-- Cycle through color schemes
+vim.api.nvim_set_keymap('n', '<leader>rcc', [[:lua reverse_cycle_color_schemes()<CR>]], { noremap = true, silent = true })
 -- Enter command mode, and begin a call to read !, the
 -- output of whatever command is then entered will be
 -- inserted into the current file on the line below
@@ -157,7 +205,10 @@ vim.keymap.set('n', '<leader>elc', ':tabe $MYVIMRC<cr>')
 -- Edit darling.lua
 vim.keymap.set('n', '<leader>edc', ':tabe ~/.config/nvim/lua/custom/plugins/darling.lua<cr>')
 
--- Darling Auto-commands :
+---------------------------------------------------------------------
+----------------------- Darling Auto Commands -----------------------
+---------------------------------------------------------------------
+
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
