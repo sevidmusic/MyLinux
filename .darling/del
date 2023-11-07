@@ -55,6 +55,9 @@ itemToDelete="$1"
 [ "$itemToDelete" = ./ ] &&
     msgAndExit "WARNING: You cannot delete the current working directory" 1
 
+[ "$itemToDelete" = . ] &&
+    msgAndExit "WARNING: You cannot delete the current working directory" 1
+
 [ ! -d "$itemToDelete" ] &&
     [ ! -f "$itemToDelete" ] &&
     msgAndExit "$itemToDelete does not exist" 1
