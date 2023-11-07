@@ -130,80 +130,81 @@ function reverse_cycle_color_schemes()
         print('First available scheme selected, use <leader>cc to go forward: ' .. current_scheme)
     end
 end
+
 ---------------------------------------------------------------------
 ------------------------ Darling Keybindings ------------------------
 ---------------------------------------------------------------------
 
 -- Go to next buffer
-vim.keymap.set('n', '<leader>nb', ':bnext<cr>')
+vim.keymap.set('n', '<leader>nb', ':bnext<cr>', { noremap = true, silent = true })
 
 -- Go to previous buffer
-vim.keymap.set('n', '<leader>pb', ':bprev<cr>')
+vim.keymap.set('n', '<leader>pb', ':bprev<cr>', { noremap = true, silent = true })
 
 -- Write current file
-vim.keymap.set('n', '<leader>w', ':w<cr>zt')
+vim.keymap.set('n', '<leader>w', ':w<cr>zt', { noremap = true, silent = true })
 
 -- Close all and quit without saving as long as there aren't any changes
-vim.keymap.set('n', '<leader>qa', ':qa<cr>')
+vim.keymap.set('n', '<leader>qa', ':qa<cr>', { noremap = true, silent = true })
 
 -- Write current file and clear undo history
-vim.keymap.set('n', '<leader>W', ':w<cr>:set undoreload=0<cr>:edit<cr>zt')
+vim.keymap.set('n', '<leader>W', ':w<cr>:set undoreload=0<cr>:edit<cr>zt', { noremap = true, silent = true })
 
--- Write current file and clear undo history
-vim.keymap.set('n', '<leader>cp', ':!xclip -sel clip %<esc>')
+-- Copy contents of current buffer to clipboard
+vim.keymap.set('n', '<leader>cp', ':!xclip -sel clip %<esc>', { noremap = true, silent = true })
 
 -- Write current file and quit
-vim.keymap.set('n', '<leader>wq', ':wq<cr>')
+vim.keymap.set('n', '<leader>wq', ':wq<cr>', { noremap = true, silent = true })
 
 -- Write all files and quit
-vim.keymap.set('n', '<leader>wqa', ':wqa<cr>')
+vim.keymap.set('n', '<leader>wqa', ':wqa<cr>', { noremap = true, silent = true })
 
 -- Show methods defined in the current file
-vim.keymap.set('n', '<leader>sm', ':!showMethods %<cr>')
+vim.keymap.set('n', '<leader>sm', ':!showMethods %<cr>', { noremap = true, silent = true })
 
 -- Find function/method
-vim.keymap.set('n', '<leader>ff', '$/function.*')
+vim.keymap.set('n', '<leader>ff', '$/function.*', { noremap = true, silent = true })
 
 -- New php doc comment single line
-vim.keymap.set('n', '<leader>pd', '0o/** */<esc>')
+vim.keymap.set('n', '<leader>pd', '0o/** */<esc>', { noremap = true, silent = true })
 
 -- New php doc comment multi line
-vim.keymap.set('n', '<leader>pdm', '0o/** */<esc>bbea<cr><esc>02dwi     <esc>0O')
+vim.keymap.set('n', '<leader>pdm', '0o/** */<esc>bbea<cr><esc>02dwi     <esc>0O', { noremap = true, silent = true })
 
 -- New private method
-vim.keymap.set('n', '<leader>nsm', '0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi')
+vim.keymap.set('n', '<leader>nsm', '0oprivate function (): void<esc>o{<esc>o}<esc>kk0wwwi', { noremap = true, silent = true })
 
 -- New protected method
-vim.keymap.set('n', '<leader>nsm', '0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi')
+vim.keymap.set('n', '<leader>npm', '0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi', { noremap = true, silent = true })
 
 -- New public method
-vim.keymap.set('n', '<leader>npm', '0opublic function (): void<esc>o{<esc>o}<esc>kk0wwwi')
-
--- New public method
-vim.keymap.set('n', '<leader>ncm', '0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi')
+vim.keymap.set('n', '<leader>ncm', '0opublic function (): void<esc>o{<esc>o}<esc>kk0wwwi', { noremap = true, silent = true })
 
 -- Find word under cursor
-vim.keymap.set('n', '<leader>fw', 'lbvey/<c-r>0<cr>')
+vim.keymap.set('n', '<leader>fw', 'lbvey/<c-r>0<cr>', { noremap = true, silent = true })
 
 -- Find word under cursor
-vim.keymap.set('n', '<leader>l', '`1zt')
+vim.keymap.set('n', '<leader>l', '`1zt', { noremap = true, silent = true })
 
 -- Cycle through color schemes
-vim.api.nvim_set_keymap('n', '<leader>cc', [[:lua cycle_color_schemes()<CR>]], { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>cc', [[:lua cycle_color_schemes()<CR>]], { noremap = true, silent = true })
 
 -- Cycle through color schemes
-vim.api.nvim_set_keymap('n', '<leader>rcc', [[:lua reverse_cycle_color_schemes()<CR>]], { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>rcc', [[:lua reverse_cycle_color_schemes()<CR>]], { noremap = true, silent = true })
 -- Enter command mode, and begin a call to read !, the
 -- output of whatever command is then entered will be
 -- inserted into the current file on the line below
 -- the line the cursor is currently on.
-vim.keymap.set('n', '<leader>iso', ':read !')
+vim.keymap.set('n', '<leader>iso', ':read !', { noremap = true, silent = true })
 
 -- Edit init.lua
-vim.keymap.set('n', '<leader>elc', ':tabe $MYVIMRC<cr>')
+vim.keymap.set('n', '<leader>elc', ':tabe $MYVIMRC<cr>', { noremap = true, silent = true })
 
 -- Edit darling.lua
-vim.keymap.set('n', '<leader>edc', ':tabe ~/.config/nvim/lua/custom/plugins/darling.lua<cr>')
+vim.keymap.set('n', '<leader>edc', ':tabe ~/.config/nvim/lua/custom/plugins/darling.lua<cr>', { noremap = true, silent = true })
+
+-- Set marker 1 at current cursor position and scroll to top
+vim.keymap.set('n', '<leader>m', 'm1zt', { noremap = true, silent = true })
 
 ---------------------------------------------------------------------
 ----------------------- Darling Auto Commands -----------------------
@@ -218,3 +219,4 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 return {
     'phpactor/phpactor',
 }
+
