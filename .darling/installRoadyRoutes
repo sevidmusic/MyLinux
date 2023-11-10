@@ -19,14 +19,14 @@ msgAndExit() {
 
 timestamp=$(/usr/bin/date +"%s")
 pathToGitProjects="$HOME/Git"
-pathToroadyRoutes="$pathToGitProjects/roadyRoutes"
+pathToRoadyRoutes="$pathToGitProjects/roadyRoutes"
 pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
 newBranchName="roadyRoutes$timestamp"
-pathToPhpUnit="$pathToroadyRoutes/vendor/bin/phpunit"
-pathToPhpStan="$pathToroadyRoutes/vendor/bin/phpstan"
+pathToPhpUnit="$pathToRoadyRoutes/vendor/bin/phpunit"
+pathToPhpStan="$pathToRoadyRoutes/vendor/bin/phpstan"
 pathToComposer="/home/darling/.local/bin/composer"
 
-[ -d "$pathToroadyRoutes" ] && msgAndExit 'roadyRoutes is already installed.'
+[ -d "$pathToRoadyRoutes" ] && msgAndExit 'roadyRoutes is already installed.'
 
 [ ! -d "$pathToGitProjects" ] && mkdir -p "$pathToGitProjects"
 
@@ -35,22 +35,22 @@ cd "$pathToGitProjects" ||
 
 git clone "https://sevidmusic:$pass@github.com/sevidmusic/roadyRoutes.git"
 
-cd "$pathToroadyRoutes" ||
-    msgAndExit "Failed to move into $pathToroadyRoutes"
+cd "$pathToRoadyRoutes" ||
+    msgAndExit "Failed to move into $pathToRoadyRoutes"
 
 "$pathToComposer" update ||
     msgAndExit 'Failed to run composer update'
 
-"$pathToPhpUnit" -c "$pathToroadyRoutes/php.xml"
+"$pathToPhpUnit" -c "$pathToRoadyRoutes/php.xml"
 
 "$pathToPhpStan" analyze --level 9 \
-    "$pathToroadyRoutes/src" \
-    "$pathToroadyRoutes/tests"
+    "$pathToRoadyRoutes/src" \
+    "$pathToRoadyRoutes/tests"
 
 git checkout -b "$newBranchName"
 git push --set-upstream origin "$newBranchName"
 
-msg "Installed roadyRoutes at $pathToroadyRoutes"
+msg "Installed roadyRoutes at $pathToRoadyRoutes"
 msg "Ran phpunit tests"
 msg "Ran phpstan tests"
 
