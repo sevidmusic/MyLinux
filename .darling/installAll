@@ -1,0 +1,11 @@
+#!/bin/sh
+
+installPHPDarlingDevTools
+installPHPJsonStorageUtilities
+installPHPJsonUtilities
+installPHPMockingUtilities
+installPHPReflectionUtilities
+installPHPTextTypes
+installPHPUnitTestUtilities
+installRoady
+

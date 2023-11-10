@@ -5,7 +5,7 @@
 -- IMPORTANT: Settings must be defined before return {} block
 
 -- Prefered Coloscheme
-vim.cmd.colorscheme 'lunaperche'
+vim.cmd.colorscheme 'murphy'
 
 -- Enable vim's built in syntax highlighting
 vim.opt.syntax = "on";

@@ -19,12 +19,11 @@ RESET_COLOR='\e[0m'
 # function to draw the square at the current position with colored edges
 function draw_square() {
   tput cup $SQUARE_Y $SQUARE_X
-  printf "${TOP_COLOR}%*s${RESET_COLOR}" $SQUARE_WIDTH ''
+  printf "${TOP_COLOR}%*s${RESET_COLOR}" $SQUARE_WIDTH '------'
   tput cup $((SQUARE_Y + 1)) $SQUARE_X
-  printf "${LEFT_COLOR}%1s${RESET_COLOR}%*s${RIGHT_COLOR}%1s${RESET_COLOR}" \
-         '#' $((SQUARE_WIDTH - 2)) '#'
+  printf "${LEFT_COLOR}%1s${RESET_COLOR}%*s${RIGHT_COLOR}%1s${RESET_COLOR}" '| @' $((SQUARE_WIDTH - 2)) '^@ |'
   tput cup $((SQUARE_Y + 2)) $SQUARE_X
-  printf "${BOTTOM_COLOR}%*s${RESET_COLOR}" $SQUARE_WIDTH ''
+  printf "${BOTTOM_COLOR}%*s${RESET_COLOR}" $SQUARE_WIDTH '\----/'
 }
 
 # function to move the square left if possible

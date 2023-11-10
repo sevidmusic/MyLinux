@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# This script will install PHPWebPaths and create
+# and push a new development branch.
+#
+# Usage
+#
+# installPHPWebPaths
+#
+
+msg() {
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+timestamp=$(/usr/bin/date +"%s")
+pathToGitProjects="$HOME/Git"
+pathToPHPWebPaths="$pathToGitProjects/PHPWebPaths"
+pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
+newBranchName="PHPWebPaths$timestamp"
+pathToPhpUnit="$pathToPHPWebPaths/vendor/bin/phpunit"
+pathToPhpStan="$pathToPHPWebPaths/vendor/bin/phpstan"
+pathToComposer="/home/darling/.local/bin/composer"
+
+[ -d "$pathToPHPWebPaths" ] && msgAndExit 'PHPWebPaths is already installed.'
+
+[ ! -d "$pathToGitProjects" ] && mkdir -p "$pathToGitProjects"
+
+cd "$pathToGitProjects" ||
+    msgAndExit "Failed to move into $pathToGitProjects"
+
+git clone "https://sevidmusic:$pass@github.com/sevidmusic/PHPWebPaths.git"
+
+cd "$pathToPHPWebPaths" ||
+    msgAndExit "Failed to move into $pathToPHPWebPaths"
+
+"$pathToComposer" update ||
+    msgAndExit 'Failed to run composer update'
+
+"$pathToPhpUnit" -c "$pathToPHPWebPaths/php.xml"
+
+"$pathToPhpStan" analyze --level 9 \
+    "$pathToPHPWebPaths/src" \
+    "$pathToPHPWebPaths/tests"
+
+git checkout -b "$newBranchName"
+git push --set-upstream origin "$newBranchName"
+
+msg "Installed PHPWebPaths at $pathToPHPWebPaths"
+msg "Ran phpunit tests"
+msg "Ran phpstan tests"
+
