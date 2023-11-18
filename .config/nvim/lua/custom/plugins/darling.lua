@@ -4,8 +4,11 @@
 
 -- IMPORTANT: Settings must be defined before return {} block
 
+-- Disable mouse
+vim.opt.mouse = "";
+
 -- Prefered Coloscheme
-vim.cmd.colorscheme 'darling'
+vim.cmd.colorscheme 'darling';
 
 -- Enable vim's built in syntax highlighting
 vim.opt.syntax = "on";
