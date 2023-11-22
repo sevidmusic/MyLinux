@@ -20,7 +20,7 @@ msgAndExit() {
 timestamp=$(/usr/bin/date +"%s")
 pathToGitProjects="$HOME/Git"
 pathToRoadyRoutes="$pathToGitProjects/RoadyRoutes"
-pass=$(/usr/bin/pass sevidmusic.github.Roadybetadev.key)
+pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
 newBranchName="RoadyRoutes$timestamp"
 pathToPhpUnit="$pathToRoadyRoutes/vendor/bin/phpunit"
 pathToPhpStan="$pathToRoadyRoutes/vendor/bin/phpstan"
