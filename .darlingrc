@@ -115,6 +115,7 @@ alias chess='telnet freechess.org'
 alias sshDarlingArchRoot='ssh root@45.79.172.110'
 alias sshDarlingArchDarling='ssh darling@45.79.172.110'
 alias civ5assets="cd /home/darling/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/"
+alias newClass="php ./vendor/darling/php-darling-dev-tools/NewClass.php"
 
 # Make sure colors match background image
 

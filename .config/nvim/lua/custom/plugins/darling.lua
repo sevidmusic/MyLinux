@@ -180,8 +180,21 @@ vim.keymap.set('n', '<leader>nsm', '0oprivate function (): void<esc>o{<esc>o}<es
 -- New protected method
 vim.keymap.set('n', '<leader>npm', '0oprotected function (): void<esc>o{<esc>o}<esc>kk0wwwi', { noremap = true, silent = true })
 
--- New public method
+-- new public method
 vim.keymap.set('n', '<leader>ncm', '0opublic function (): void<esc>o{<esc>o}<esc>kk0wwwi', { noremap = true, silent = true })
+
+--#region
+
+-- New private property
+vim.keymap.set('n', '<leader>nsp', '0oprivate type $;<esc>ha', { noremap = true, silent = true })
+
+-- New protected property
+vim.keymap.set('n', '<leader>npp', '0oprotected type $;<esc>ha', { noremap = true, silent = true })
+
+-- new public property
+vim.keymap.set('n', '<leader>ncp', '0opublic type $;<esc>ha', { noremap = true, silent = true })
+
+--#region
 
 -- Find word under cursor
 vim.keymap.set('n', '<leader>fw', 'lbvey/<c-r>0<cr>', { noremap = true, silent = true })
