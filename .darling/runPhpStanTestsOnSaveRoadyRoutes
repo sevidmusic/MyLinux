@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # This script will run `phpstan` tests via `entr` whenever
-# a file in roadyRoutes's src/ or Tests/ directory
+# a file in RoadyRoutes's src/ or Tests/ directory
 # is modified.
 #
 # Usage:
@@ -19,10 +19,10 @@ msgAndExit() {
 }
 
 pathToPHPProjects="$HOME/Git"
-pathToRoadyRoutes="$pathToPHPProjects/roadyRoutes"
+pathToRoadyRoutes="$pathToPHPProjects/RoadyRoutes"
 pathToPHPStan="$pathToRoadyRoutes/vendor/bin/phpstan"
 
-cd "$pathToRoadyRoutes" || msgAndExit 'roadyRoutes is not installed'
+cd "$pathToRoadyRoutes" || msgAndExit 'RoadyRoutes is not installed'
 
 find \
     "$pathToRoadyRoutes/tests" \

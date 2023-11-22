@@ -1,11 +1,11 @@
 #!/bin/sh
 #
-# This script will install roadyRoutes and create
+# This script will install RoadyRoutes and create
 # and push a new development branch.
 #
 # Usage
 #
-# installroadyRoutes
+# installRoadyRoutes
 #
 
 msg() {
@@ -19,21 +19,21 @@ msgAndExit() {
 
 timestamp=$(/usr/bin/date +"%s")
 pathToGitProjects="$HOME/Git"
-pathToRoadyRoutes="$pathToGitProjects/roadyRoutes"
-pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
-newBranchName="roadyRoutes$timestamp"
+pathToRoadyRoutes="$pathToGitProjects/RoadyRoutes"
+pass=$(/usr/bin/pass sevidmusic.github.Roadybetadev.key)
+newBranchName="RoadyRoutes$timestamp"
 pathToPhpUnit="$pathToRoadyRoutes/vendor/bin/phpunit"
 pathToPhpStan="$pathToRoadyRoutes/vendor/bin/phpstan"
 pathToComposer="/home/darling/.local/bin/composer"
 
-[ -d "$pathToRoadyRoutes" ] && msgAndExit 'roadyRoutes is already installed.'
+[ -d "$pathToRoadyRoutes" ] && msgAndExit 'RoadyRoutes is already installed.'
 
 [ ! -d "$pathToGitProjects" ] && mkdir -p "$pathToGitProjects"
 
 cd "$pathToGitProjects" ||
     msgAndExit "Failed to move into $pathToGitProjects"
 
-git clone "https://sevidmusic:$pass@github.com/sevidmusic/roadyRoutes.git"
+git clone "https://sevidmusic:$pass@github.com/sevidmusic/RoadyRoutes.git"
 
 cd "$pathToRoadyRoutes" ||
     msgAndExit "Failed to move into $pathToRoadyRoutes"
@@ -50,7 +50,7 @@ cd "$pathToRoadyRoutes" ||
 git checkout -b "$newBranchName"
 git push --set-upstream origin "$newBranchName"
 
-msg "Installed roadyRoutes at $pathToRoadyRoutes"
+msg "Installed RoadyRoutes at $pathToRoadyRoutes"
 msg "Ran phpunit tests"
 msg "Ran phpstan tests"
 

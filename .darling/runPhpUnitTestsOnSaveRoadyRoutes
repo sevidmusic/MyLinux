@@ -1,12 +1,12 @@
 #!/bin/sh
 #
 # This script will run `phpunit` tests via `entr` whenever
-# a file in either roadyRoutes's src/ or tests/
+# a file in either RoadyRoutes's src/ or tests/
 # directoy is modified.
 #
 # Usage:
 #
-# runPHPUnitTestsOnSaveroadyRoutes
+# runPHPUnitTestsOnSaveRoadyRoutes
 #
 
 msg() {
@@ -19,10 +19,10 @@ msgAndExit() {
 }
 
 pathToPhpProjects="$HOME/Git"
-pathToRoadyRoutes="$pathToPhpProjects/roadyRoutes"
+pathToRoadyRoutes="$pathToPhpProjects/RoadyRoutes"
 pathToPhpUnit="$pathToRoadyRoutes/vendor/bin/phpunit"
 
-cd "$pathToRoadyRoutes" || msgAndExit 'roadyRoutes is not installed'
+cd "$pathToRoadyRoutes" || msgAndExit 'RoadyRoutes is not installed'
 
 find \
     "$pathToRoadyRoutes/tests" \
