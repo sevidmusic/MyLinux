@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export XDEBUG_SESSION=1; php "$@"
+

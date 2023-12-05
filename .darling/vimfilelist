@@ -1,0 +1,3 @@
+./runPhpStanTestsOnSavePHPFileSystemPaths
+./installPHPFileSystemPaths
+./runPhpUnitTestsOnSavePHPFileSystemPaths

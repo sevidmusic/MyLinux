@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ls ~/.darling/install* > /tmp/install; while read -r com; do $com; done < /tmp/install
+

@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# This script will run `phpunit` tests via `entr` whenever
+# a file in either PHPFileSystemPaths's src/ or tests/
+# directoy is modified.
+#
+# Usage:
+#
+# runPHPUnitTestsOnSavePHPFileSystemPaths
+#
+
+msg() {
+    printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+    msg "$1"
+    exit 1
+}
+
+pathToPhpProjects="$HOME/Git"
+pathToPHPFileSystemPaths="$pathToPhpProjects/PHPFileSystemPaths"
+pathToPhpUnit="$pathToPHPFileSystemPaths/vendor/bin/phpunit"
+
+cd "$pathToPHPFileSystemPaths" || msgAndExit 'PHPFileSystemPaths is not installed'
+
+find \
+    "$pathToPHPFileSystemPaths/tests" \
+    "$pathToPHPFileSystemPaths/src" \
+    -type f -name "*.php" |
+    entr -c "$pathToPhpUnit" -c "$pathToPHPFileSystemPaths/php.xml"
+

@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# This script will install roady and create
+# This script will install Roady and create
 # and push a new development branch.
 #
 # Usage
@@ -19,9 +19,9 @@ msgAndExit() {
 
 timestamp=$(/usr/bin/date +"%s")
 pathToPhpProjects="$HOME/Git"
-pathToRoady="$pathToPhpProjects/roady"
+pathToRoady="$pathToPhpProjects/Roady"
 pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
-newBranchName="roady$timestamp"
+newBranchName="Roady$timestamp"
 pathToPhpUnit="$pathToRoady/vendor/bin/phpunit"
 pathToPhpStan="$pathToRoady/vendor/bin/phpstan"
 pathToComposer="/home/darling/.local/bin/composer"
@@ -33,7 +33,7 @@ pathToComposer="/home/darling/.local/bin/composer"
 cd "$pathToPhpProjects" ||
     msgAndExit "Failed to move into $pathToPhpProjects"
 
-git clone "https://sevidmusic:$pass@github.com/sevidmusic/roady.git"
+git clone "https://sevidmusic:$pass@github.com/sevidmusic/Roady.git"
 
 cd "$pathToRoady" ||
     msgAndExit "Failed to move into $pathToRoady"
@@ -50,7 +50,7 @@ cd "$pathToRoady" ||
 git checkout -b "$newBranchName"
 git push --set-upstream origin "$newBranchName"
 
-msg "Installed roady at $pathToRoady"
+msg "Installed Roady at $pathToRoady"
 msg "Ran phpunit tests"
 msg "Ran phpstan tests"
 
