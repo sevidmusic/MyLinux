@@ -81,6 +81,7 @@ PS1='\n\[\e[1;0m\] $(mylinux_branch)$(mylinux_status) $(git_branch)$(git_status)
 alias map="mapscii"
 alias tmap="telnet mapscii.me"
 alias cdswp="cd /home/darling/.local/share/nvim/swap/"
+alias cdvimcc="cd /home/darling/manuallyInstalledBinaries/nvim-linux64/share/nvim/runtime/colors"
 alias c='clear'
 alias gfav='gtav ":)"'
 alias l='exa'

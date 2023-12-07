@@ -222,6 +222,10 @@ vim.keymap.set('n', '<leader>edc', ':tabe ~/.config/nvim/lua/custom/plugins/darl
 -- Set marker 1 at current cursor position and scroll to top
 vim.keymap.set('n', '<leader>m', 'm1zt', { noremap = true, silent = true })
 
+-- Edit darling colorscheme
+vim.keymap.set('n', '<leader>ecc', ':edit /home/darling/manuallyInstalledBinaries/nvim-linux64/share/nvim/runtime/colors/darling.vim<CR>', { noremap = true, silent = true })
+
+
 ---------------------------------------------------------------------
 ----------------------- Darling Auto Commands -----------------------
 ---------------------------------------------------------------------
