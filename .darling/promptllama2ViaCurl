@@ -1,0 +1,6 @@
+#!/bin/bash
+
+curl http://localhost:11434/api/generate -d "{
+  \"model\": \"llama2\",
+  \"prompt\":\"${1:-Please tell me something interesting}\"
+}"

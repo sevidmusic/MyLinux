@@ -225,6 +225,9 @@ vim.keymap.set('n', '<leader>m', 'm1zt', { noremap = true, silent = true })
 -- Edit darling colorscheme
 vim.keymap.set('n', '<leader>ecc', ':edit /home/darling/manuallyInstalledBinaries/nvim-linux64/share/nvim/runtime/colors/darling.vim<CR>', { noremap = true, silent = true })
 
+-- Show lsp references dialoge
+vim.keymap.set('n', '<leader>cd', ':Telescope lsp_references<cr>', { noremap = true, silent = true })
+
 
 ---------------------------------------------------------------------
 ----------------------- Darling Auto Commands -----------------------
