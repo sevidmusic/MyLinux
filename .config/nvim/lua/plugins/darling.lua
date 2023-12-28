@@ -150,9 +150,6 @@ vim.keymap.set("n", "<leader>w", ":w<cr>zt", { noremap = true, silent = true })
 -- Close all and quit without saving as long as there aren't any changes
 vim.keymap.set("n", "<leader>qa", ":qa<cr>", { noremap = true, silent = true })
 
--- Write current file and clear undo history
-vim.keymap.set("n", "<leader>W", ":w<cr>:set undoreload=0<cr>:edit<cr>zt", { noremap = true, silent = true })
-
 -- Copy contents of current buffer to clipboard
 vim.keymap.set("n", "<leader>cp", ":!xclip -sel clip %<esc>", { noremap = true, silent = true })
 
@@ -215,7 +212,7 @@ vim.keymap.set("n", "<leader>ncp", "0opublic type $;<esc>ha", { noremap = true, 
 vim.keymap.set("n", "<leader>fw", "lbvey/<c-r>0<cr>", { noremap = true, silent = true })
 
 -- Find word under cursor
-vim.keymap.set("n", "<leader>l", "`1zt", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>M", "`1zt", { noremap = true, silent = true })
 
 -- Cycle through color schemes
 vim.keymap.set("n", "<leader>cc", [[:lua cycle_color_schemes()<CR>]], { noremap = true, silent = true })
@@ -253,6 +250,21 @@ vim.keymap.set(
 -- Show lsp references dialoge
 vim.keymap.set("n", "<leader>cd", ":Telescope lsp_references<cr>", { noremap = true, silent = true })
 
+--  Reset undo history
+vim.keymap.set(
+  "n",
+  "<leader>ru",
+  ":let old_undolevels = &undolevels<cr>:set undolevels=-1<cr>a <BS><Esc>:let &undolevels = old_undolevels<cr>:unlet old_undolevels<cr>",
+  { noremap = true, silent = true }
+)
+
+--  Write changes and Reset undo history
+vim.keymap.set(
+  "n",
+  "<leader>W",
+  "m1:w<cr>:let old_undolevels = &undolevels<cr>:set undolevels=-1<cr>$a <BS><Esc>:let &undolevels = old_undolevels<cr>:unlet old_undolevels<cr>:w<cr>`1",
+  { noremap = true, silent = true }
+)
 ---------------------------------------------------------------------
 ----------------------- Darling Auto Commands -----------------------
 ---------------------------------------------------------------------
@@ -262,6 +274,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
+-- au BufWritePre /tmp/* setlocal noundofile
 -- return {} is required even if it is empty.
 return {
 
