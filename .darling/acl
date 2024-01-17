@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ollama run codellama "${1}"

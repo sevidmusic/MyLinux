@@ -144,9 +144,6 @@ vim.keymap.set("n", "<leader>nb", ":bnext<cr>", { noremap = true, silent = true 
 -- Go to previous buffer
 vim.keymap.set("n", "<leader>pb", ":bprev<cr>", { noremap = true, silent = true })
 
--- Write current file
-vim.keymap.set("n", "<leader>w", ":w<cr>zt", { noremap = true, silent = true })
-
 -- Close all and quit without saving as long as there aren't any changes
 vim.keymap.set("n", "<leader>qa", ":qa<cr>", { noremap = true, silent = true })
 
@@ -154,24 +151,23 @@ vim.keymap.set("n", "<leader>qa", ":qa<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>cp", ":!xclip -sel clip %<esc>", { noremap = true, silent = true })
 
 -- Write current file and quit
-vim.keymap.set("n", "<leader>wq", ":wq<cr>", { noremap = true, silent = true })
-
--- Write all files and quit
-vim.keymap.set("n", "<leader>wqa", ":wqa<cr>", { noremap = true, silent = true })
+vim.keymap.set(
+  "n",
+  "<leader>wqa",
+  "m1:w<cr>:let old_undolevels = &undolevels<cr>:set undolevels=-1<cr>$a <BS><Esc>:let &undolevels = old_undolevels<cr>:unlet old_undolevels<cr>:w<cr>`1:q<cr>",
+  { noremap = true, silent = true }
+)
 
 -- Show methods defined in the current file
 vim.keymap.set("n", "<leader>sm", ":!showMethods %<cr>", { noremap = true, silent = true })
 
--- Find function/method
+-- Find function/method (php)
 vim.keymap.set("n", "<leader>ff", "$/function.*", { noremap = true, silent = true })
 
--- New php doc comment single line
-vim.keymap.set("n", "<leader>pd", "0o/** */<esc>", { noremap = true, silent = true })
-
--- New php doc comment multi line
+-- New php doc comment multi line (php)
 vim.keymap.set("n", "<leader>pdm", "0o/** */<esc>bbea<cr><esc>02dwi     <esc>0O", { noremap = true, silent = true })
 
--- New private method
+-- New private method (php)
 vim.keymap.set(
   "n",
   "<leader>nsm",
@@ -179,7 +175,7 @@ vim.keymap.set(
   { noremap = true, silent = true }
 )
 
--- New protected method
+-- New protected method (php)
 vim.keymap.set(
   "n",
   "<leader>npm",
@@ -187,7 +183,7 @@ vim.keymap.set(
   { noremap = true, silent = true }
 )
 
--- new public method
+-- new public method (php)
 vim.keymap.set(
   "n",
   "<leader>ncm",
@@ -195,23 +191,22 @@ vim.keymap.set(
   { noremap = true, silent = true }
 )
 
---#region
-
--- New private property
+-- New private property (php)
 vim.keymap.set("n", "<leader>nsp", "0oprivate type $;<esc>ha", { noremap = true, silent = true })
 
--- New protected property
+-- New protected property (php)
 vim.keymap.set("n", "<leader>npp", "0oprotected type $;<esc>ha", { noremap = true, silent = true })
 
--- new public property
+-- new public property (php)
 vim.keymap.set("n", "<leader>ncp", "0opublic type $;<esc>ha", { noremap = true, silent = true })
-
---#region
 
 -- Find word under cursor
 vim.keymap.set("n", "<leader>fw", "lbvey/<c-r>0<cr>", { noremap = true, silent = true })
 
--- Find word under cursor
+-- Set marker 1 at current cursor position and scroll to top
+vim.keymap.set("n", "<leader>m", "m1zt", { noremap = true, silent = true })
+
+--  Go to marker 1 and scroll to top
 vim.keymap.set("n", "<leader>M", "`1zt", { noremap = true, silent = true })
 
 -- Cycle through color schemes
@@ -235,9 +230,6 @@ vim.keymap.set(
   ":tabe ~/.config/nvim/lua/plugins/darling.lua<cr>",
   { noremap = true, silent = true }
 )
-
--- Set marker 1 at current cursor position and scroll to top
-vim.keymap.set("n", "<leader>m", "m1zt", { noremap = true, silent = true })
 
 -- Edit darling colorscheme
 vim.keymap.set(
@@ -265,6 +257,7 @@ vim.keymap.set(
   "m1:w<cr>:let old_undolevels = &undolevels<cr>:set undolevels=-1<cr>$a <BS><Esc>:let &undolevels = old_undolevels<cr>:unlet old_undolevels<cr>:w<cr>`1",
   { noremap = true, silent = true }
 )
+
 ---------------------------------------------------------------------
 ----------------------- Darling Auto Commands -----------------------
 ---------------------------------------------------------------------
