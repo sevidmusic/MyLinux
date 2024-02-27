@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# This script will install RoadyRoutingUtilities and create
+# and push a new development branch.
+#
+# Usage
+#
+# installRoadyRoutingUtilities
+#
+
+msg() {
+	printf '%b%s%b' "\n\n\e[0m\e[105m\e[30m" "$1" "\e[0m\n\n"
+}
+
+msgAndExit() {
+	msg "$1"
+	exit 1
+}
+
+timestamp=$(/usr/bin/date +"%s")
+pathToGitProjects="$HOME/Git"
+pathToRoadyRoutingUtilities="$pathToGitProjects/RoadyRoutingUtilities"
+pass=$(/usr/bin/pass sevidmusic.github.roadybetadev.key)
+newBranchName="RoadyRoutingUtilities$timestamp"
+pathToPhpUnit="$pathToRoadyRoutingUtilities/vendor/bin/phpunit"
+pathToPhpStan="$pathToRoadyRoutingUtilities/vendor/bin/phpstan"
+pathToComposer="/home/darling/.local/bin/composer"
+
+[ -d "$pathToRoadyRoutingUtilities" ] && msgAndExit 'RoadyRoutingUtilities is already installed.'
+
+[ ! -d "$pathToGitProjects" ] && mkdir -p "$pathToGitProjects"
+
+cd "$pathToGitProjects" ||
+	msgAndExit "Failed to move into $pathToGitProjects"
+
+git clone "https://sevidmusic:$pass@github.com/sevidmusic/RoadyRoutingUtilities.git"
+
+cd "$pathToRoadyRoutingUtilities" ||
+	msgAndExit "Failed to move into $pathToRoadyRoutingUtilities"
+
+"$pathToComposer" update ||
+	msgAndExit 'Failed to run composer update'
+
+"$pathToPhpUnit" -c "$pathToRoadyRoutingUtilities/php.xml"
+
+"$pathToPhpStan" analyze --level 9 \
+	"$pathToRoadyRoutingUtilities/src" \
+	"$pathToRoadyRoutingUtilities/tests"
+
+git checkout -b "$newBranchName"
+git push --set-upstream origin "$newBranchName"
+
+msg "Installed RoadyRoutingUtilities at $pathToRoadyRoutingUtilities"
+msg "Ran phpunit tests"
+msg "Ran phpstan tests"

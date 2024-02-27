@@ -122,9 +122,9 @@ alias vi="vim"
 [ -z "$TMUX" ] && updateWal
 
 # show todo list
-# echo "Todo: "
-# echo
-# td list
-# echo
-# echo "To view todo: td list | To add todo: td add \"todo\" | To remove todo: td done <int>"
+echo "Todo: "
+echo
+td list
+echo
+echo "To view todo: td list | To add todo: td add \"todo\" | To remove todo: td done <int>"
 #

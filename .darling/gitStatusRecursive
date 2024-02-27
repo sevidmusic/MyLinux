@@ -1,0 +1,8 @@
+#!/bin/bash
+
+for d in ./*; do
+	d="${d%*/}"
+	cd "${d}" || return 1
+	git status || return 1
+	cd ../ || return 1
+done
